@@ -1,0 +1,703 @@
+Delivered-To: springfree.eu@gmail.com
+Received: by 2002:a05:7412:fa0:b0:1b1:123b:d3d2 with SMTP id v32csp2422589rda;
+        Tue, 27 Jan 2026 11:38:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVhdU25LNcQoW/OE6hyrSTZbTd8c/RflHMHBzHIVaMGrRG1xtYg9iihNd/eYz4TIAXOj+aLXA1c069/VDi6@gmail.com
+X-Received: by 2002:a05:6000:2585:b0:435:9690:f056 with SMTP id ffacd0b85a97d-435dd1c0bb8mr4215247f8f.35.1769542737474;
+        Tue, 27 Jan 2026 11:38:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769542737; cv=none;
+        d=google.com; s=arc-20240605;
+        b=fMfaLdZtQSXqrrETAyCLByLudZ02OPQy1D6ZoCkHS6h1T9dMkU6bontO+pCbaw1bqG
+         sx4jaBhA/Ndxzc1j2CDZPiHoiPNMVoNMWzcYUcRcskEbWWLVo1BtsbqX6M3dCpP3FAFi
+         A5/Hov6JRBxNWbIWDqVf5g7PDGhBqpuqQbcBrKuv7Uxdn9syrEZnW5HXcOGqMhe2gsf2
+         o52lFCAW5SP3pdCUxP2YnXQZzcLhRbuHW5A5M8Gjj347FsUmzBMTdRXA4P1UAW+WDQJw
+         5KlsAjA6uYTImCvP1eoR/fkWGdAM8esU9e7xUceBDmCW8UnXrBuM2FRpnvIGcZ8s4Csv
+         0J/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:message-id:subject:reply-to
+         :from:to:date:dkim-signature;
+        bh=FeClP9VRm28JYSqavDVwSG60GiWCbiBzEzbbLwRd6Kg=;
+        fh=TChxcI9OA4hyCXB0C6YNIRHUiS+yOjiBSd5lfHoB8EU=;
+        b=kkow5OpkC5HieEANLvHaqLJZpNTNaqJt8Bbbxn1oDNHH2CxO/BFiyRcRDQU77yzG1k
+         zSekTg52pqVMRPJA/DDDsKJwyzNevn+KH8e0p7YqQcPrQuiq1rp6M1eyuD1RdK5cZXCG
+         t0BcgVNbTNZDvWQgT5jVVpB628DgV9XZT7Pusx6xjNCYqa6LStrtovm7wqwHMvGI/AvV
+         oMZ70sgRyRGW6FUckuhPtg67s87+rNjCHPw04NZIF7kXTLuRolJmV1PEMZVtuuSE7y79
+         RGHjtDatd19zc0zgE+nBLLrzLMHb20xtAXmBx7azhUm2l/m4Jq2j6LAzi0P7VVbttPLy
+         UqKg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@jumpsafe.eu header.s=mail header.b=PK4c5pk1;
+       spf=pass (google.com: domain of springfree@jumpsafe.eu designates 45.13.137.23 as permitted sender) smtp.mailfrom=springfree@jumpsafe.eu;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jumpsafe.eu
+Return-Path: <springfree@jumpsafe.eu>
+Received: from m1-out-mua-14.websupport.sk (m1-out-mua-14.websupport.sk. [45.13.137.23])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-435e1775f33si548321f8f.441.2026.01.27.11.38.57
+        for <springfree.eu@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 Jan 2026 11:38:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of springfree@jumpsafe.eu designates 45.13.137.23 as permitted sender) client-ip=45.13.137.23;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@jumpsafe.eu header.s=mail header.b=PK4c5pk1;
+       spf=pass (google.com: domain of springfree@jumpsafe.eu designates 45.13.137.23 as permitted sender) smtp.mailfrom=springfree@jumpsafe.eu;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jumpsafe.eu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jumpsafe.eu; s=mail; t=1769542736; bh=FeClP9VRm28JYSqavDVwSG60GiWCbiBzEzbbLwRd6Kg=; h=Date:To:From:Reply-To:Subject:From; b=PK4c5pk1bBdduImFa+RZSg5Ds/aezP9KyyiQEt48X985kKVXkpaH9b2MbBvfEDEP5
+	 zAkllQ+7WW0vzb2nGDQFWZefX4rq9sM+pKJLCZ0jPKBROwF4ZednFo7CmDq3kLtyD3
+	 nrKQz0Yu9tHkwDHmUVgtEDnwcwaazqun9YxBDRHtrciyv73vOn6FljAsdkAMvx9MXx
+	 RyRNJQOj6+DifxCK0diLJHECwoDFd9JI4ZaE5gfUt5KjKLIL48JiO4GRjRyFaeplhY
+	 5YodAgk3tLW9cuzZ7vdx3VdywUazHLnbzuovOT8e0nYkMZSpi65matAFXh2PHc3zWf
+	 zB/nsFxXiOEWw==
+Received: from m1-u32-backend.m1.websupport.sk (unknown [10.20.32.1]) (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits)) (No client certificate requested) by smtp-cf.websupport.sk (Postfix) with ESMTPS id 4f0wh04Fljz4K18 for <springfree.eu@gmail.com>; Tue, 27 Jan 2026 20:38:56 +0100 (CET)
+Received: from m1-u5-mx.websupport.sk (unknown [10.30.5.3]) by m1-u32-backend.m1.websupport.sk (Postfix) with ESMTP id 4f0wh03fwnz14LFs for <springfree@jumpsafe.eu>; Tue, 27 Jan 2026 20:38:56 +0100 (CET)
+Received: from m1-u9-ing.websupport.sk (unknown [45.13.137.96]) (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits)) (No client certificate requested) by m1-u5-mx.websupport.sk (Postfix) with ESMTPS id 4f0wh01L6hz2F3V for <springfree@jumpsafe.eu>; Tue, 27 Jan 2026 20:38:56 +0100 (CET)
+X-Authenticated-Sender: springfree@jumpsafe.eu
+Authentication-Results: m1-u9-ing.websupport.sk; auth=pass smtp.auth=springfree@jumpsafe.eu smtp.mailfrom=springfree@jumpsafe.eu
+Received: from mailer.baselinker.com (mxa.mailer2.baselinker.com [193.70.124.48]) (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256) (No client certificate requested) (Authenticated sender: springfree@jumpsafe.eu) by m1-u9-ing.websupport.sk (Postfix) with ESMTPSA id 4f0wgz5HCXz2njP for <springfree@jumpsafe.eu>; Tue, 27 Jan 2026 20:38:55 +0100 (CET)
+Date: Tue, 27 Jan 2026 20:38:55 +0100
+To: springfree@jumpsafe.eu
+From: Springfree <springfree@jumpsafe.eu>
+Reply-To: Springfree <springfree@jumpsafe.eu>
+Subject: Vaše objednávka u Springfree byla přijata
+Message-ID: <7lNu28X1DUxEZNhC3JlyDjRCCJ92HF2XjQplfXFc30@mailer2>
+X-Mailer: BaseLinker
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="b1=_7lNu28X1DUxEZNhC3JlyDjRCCJ92HF2XjQplfXFc30"
+Content-Transfer-Encoding: 8bit
+X-Out-Rspamd-Queue-Id: 4f0wgz5HCXz2njP
+X-Out-Rspamd-Server: m1-rspamd-out-4
+X-Out-Spamd-Result: default: False [2.95 / 1000.00]; PHISHING(2.49)[base.com->baselinker.com]; MID_RHS_NOT_FQDN(0.50)[]; MIME_GOOD(-0.10)[multipart/alternative,text/plain]; MANY_INVISIBLE_PARTS(0.05)[1]; XM_UA_NO_VERSION(0.01)[]; RCPT_COUNT_ONE(0.00)[1]; FROM_HAS_DN(0.00)[]; MIME_TRACE(0.00)[0:+,1:+,2:~]; GENERIC_REPUTATION(0.00)[-0.49838807636076]; ASN(0.00)[asn:16276, ipnet:193.70.0.0/17, country:FR]; TO_EQ_FROM(0.00)[]; ARC_NA(0.00)[]; HAS_X_AS(0.00)[]; HAS_REPLYTO(0.00)[springfree@jumpsafe.eu]; FROM_EQ_ENVFROM(0.00)[]; RCVD_COUNT_ZERO(0.00)[0]; TO_DN_NONE(0.00)[]; TO_MATCH_ENVRCPT_ALL(0.00)[]; REPLYTO_EQ_FROM(0.00)[]
+X-Rspamd-Action: no action
+X-Rspamd-Server: m1-rspamd-in-3
+X-Rspamd-Queue-Id: 4f0wh01L6hz2F3V
+X-Spamd-Result: default: False [-0.20 / 1000.00]; R_SPF_ALLOW(-0.20)[+ip4:45.13.137.0/25]; ASN(0.00)[asn:51013, ipnet:45.13.137.0/24, country:SK]; TO_EQ_FROM(0.00)[]; HAS_REPLYTO(0.00)[springfree@jumpsafe.eu]; FROM_HAS_DN(0.00)[]; WS_IP_WHITELIST(0.00)[45.13.137.96]; R_DKIM_NA(0.00)[]; FROM_EQ_ENVFROM(0.00)[]; REPLYTO_EQ_FROM(0.00)[]
+X-Rspamd-Pre-Result: action=no action; module=multimap; Matched map: WS_IP_WHITELIST
+X-purgate-type: clean
+X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
+X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
+X-purgate: clean
+X-purgate-size: 43256
+X-purgate-ID: 155908::1769542736-8B797046-12D75CD7/0/0
+
+--b1=_7lNu28X1DUxEZNhC3JlyDjRCCJ92HF2XjQplfXFc30
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Potvrzení objednávkyVážený/á Adam, Vaše objednávka č. 29968509 byla úspěšně přijata.Děkujeme za Vaši objednávku!Vážený/á Adam, Vaše objednávka č. 29968509 byla úspěšně přijata.
+&#10003;POTVRZENO2ODESLÁNO3DORUČENOSledovat stavVAŠE OBJEDNÁVKA
+Pokrivni ponjava - R30 – Mini Round
+Množství: 1x
+149.00 EUR
+Pokrivni ponjava - O47 – Compact Oval
+Množství: 1x
+149.00 EUR
+Pokrivni ponjava - O77 - Medium Oval
+Množství: 1x
+199.00 EUR
+Pokrivni ponjava - R54 - Compact Round
+Množství: 1x
+149.00 EUR
+Pokrivni ponjava - R79 - Medium Round
+Množství: 1x
+149.00 EUR
+Pokrivni ponjava - O92 - Large Oval
+Množství: 1x
+199.00 EUR
+Pokrivni ponjava - S113 - Large Square
+Množství: 1x
+249.00 EUR
+Pokrivni ponjava - R132 - Jumbo Round
+Množství: 1x
+249.00 EUR
+Sončna zaslonka - Mini Round (R30)
+Množství: 1x
+149.00 EUR
+Sončna zaslonka - Compact Oval (O47)
+Množství: 1x
+149.00 EUR
+Sončna zaslonka - Compact Round (R54)
+Množství: 1x
+149.00 EUR
+Sončna zaslonka - Medium Round (R79)
+Množství: 1x
+149.00 EUR
+Sončna zaslonka - Medium Oval (O77)
+Množství: 1x
+199.00 EUR
+Sončna zaslonka - Large Oval (O92)
+Množství: 1x
+199.00 EUR
+Sončna zaslonka - Large Square (S113)
+Množství: 1x
+249.00 EUR
+Sončna zaslonka - Jumbo Round (R132)
+Množství: 1x
+249.00 EUR
+Medium Oval
+Množství: 1x
+1549.00 EUR
+CELKEM K ÚHRADĚ
+4601.00 EUR
+DODACÍ ÚDAJE
+FAKTURAČNÍ ADRESA
+Adam test Forgac test
+Kárpát u. 81. testomg
+8485 Dabrony
+Slovinsko
+DORUČOVACÍ ADRESA
+Adam Forgáč
+Dlouhé díly 380
+1211 Zlín
+Slovinsko
+PLATBA
+Z bančnim nakazilom
+DOPRAVA
+Dostava po kurirju
+Potřebujete poradit?
+Jsme tu pro Vás. Zavolejte nám na +420 777 559 607 nebo napište na springfree@jumpsafe.eu
+NEZAPOMNĚLI JSTE NA NĚCO?
+Pokud je ještě nemáte, stále je můžete přidat. Objednejte teď a pošleme vše společně.
+Basketbalový koš FlexrHoop
+PřidatSluneční clona
+PřidatKrycí plachta
+PřidatPojezdová kola
+Přidat...a mnoho dalšího příslušenství
+Springfree Trampoline | springfree@jumpsafe.eu | +420 777 559 607© 2026 Springfree Trampoline. Všechna práva vyhrazena.      Sent by Base.com
+  
+
+--b1=_7lNu28X1DUxEZNhC3JlyDjRCCJ92HF2XjQplfXFc30
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"cs" xmlns=3D"http://www.w3.org/1999/xhtml" xml=
+ns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com=
+:office:office"><head><meta charset=3D"UTF-8"><meta name=3D"viewport" conte=
+nt=3D"width=3Ddevice-width, initial-scale=3D1.0"><meta http-equiv=3D"X-UA-C=
+ompatible" content=3D"IE=3Dedge"><meta name=3D"x-apple-disable-message-refo=
+rmatting"><meta name=3D"format-detection" content=3D"telephone=3Dno,address=
+=3Dno,email=3Dno,date=3Dno,url=3Dno"><title>Potvrzen=C3=AD objedn=C3=A1vky<=
+/title><!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerIn=
+ch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><style>t=
+able{border-collapse:collapse;}td,th,div,p,a,h1,h2,h3,h4,h5,h6{font-family:=
+Arial,sans-serif;mso-line-height-rule:exactly;}</style><![endif]--><style t=
+ype=3D"text/css">body,table,td,a{-webkit-text-size-adjust:100%;-ms-text-siz=
+e-adjust:100%;}table,td{mso-table-lspace:0pt;mso-table-rspace:0pt;}img{-ms-=
+interpolation-mode:bicubic;border:0;height:auto;line-height:100%;outline:no=
+ne;text-decoration:none;}body{margin:0!important;padding:0!important;width:=
+100%!important;background-color:#f5f7f9;}a[x-apple-data-detectors]{color:in=
+herit!important;text-decoration:none!important;}u+#body a{color:inherit;tex=
+t-decoration:none;}@media screen and (max-width:600px){.mobile-wrapper{widt=
+h:100%!important;max-width:100%!important;}.mobile-padding{padding-left:20p=
+x!important;padding-right:20px!important;}.mobile-total{font-size:20px!impo=
+rtant;}}</style></head><body id=3D"body" style=3D"margin:0!important;paddin=
+g:0!important;background-color:#f5f7f9;"><!--[if mso]><div style=3D"display=
+:none;font-size:1px;color:#f5f7f9;line-height:1px;max-height:0px;max-width:=
+0px;overflow:hidden;">V=C3=A1=C5=BEen=C3=BD/=C3=A1 Adam, Va=C5=A1e objedn=
+=C3=A1vka =C4=8D. 29968509 byla =C3=BAsp=C4=9B=C5=A1n=C4=9B p=C5=99ijata.</=
+div><![endif]--><!--[if !mso]><!--><div style=3D"display:none;font-size:1px=
+;color:#f5f7f9;line-height:1px;max-height:0px;max-width:0px;mso-hide:all;ov=
+erflow:hidden;">V=C3=A1=C5=BEen=C3=BD/=C3=A1 Adam, Va=C5=A1e objedn=C3=A1vk=
+a =C4=8D. 29968509 byla =C3=BAsp=C4=9B=C5=A1n=C4=9B p=C5=99ijata.</div><!--=
+<![endif]--><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%" style=3D"background-color:#f5f7f9;"><tr><td align=3D"center" vali=
+gn=3D"top" style=3D"padding:30px 10px;"><!--[if mso]><table align=3D"center=
+" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"600"><tr><td al=
+ign=3D"center" valign=3D"top" width=3D"600"><![endif]--><table border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"max-width:600p=
+x;background-color:#ffffff;border-radius:12px;overflow:hidden;" class=3D"mo=
+bile-wrapper"><!-- HEADER --><tr><td align=3D"center" valign=3D"middle" sty=
+le=3D"background-color:#0088CE;padding:28px 40px;" class=3D"mobile-padding"=
+><a href=3D"https://www.trampoliny-springfree.cz" target=3D"_blank" style=
+=3D"text-decoration:none;"><img src=3D"https://jumpsafe.eu/mail-images/spri=
+ngfree-logo-white.png" alt=3D"Springfree Trampoline" width=3D"160" style=3D=
+"display:block;max-width:160px;"></a></td></tr><!-- HERO --><tr><td align=
+=3D"center" valign=3D"top" style=3D"padding:40px 40px 16px 40px;" class=3D"=
+mobile-padding"><h1 style=3D"font-family:Arial,Helvetica,sans-serif;font-si=
+ze:26px;font-weight:bold;color:#2d3748;margin:0 0 14px 0;line-height:32px;m=
+so-line-height-rule:exactly;">D=C4=9Bkujeme za Va=C5=A1i objedn=C3=A1vku!</=
+h1><p style=3D"font-family:Arial,Helvetica,sans-serif;font-size:15px;line-h=
+eight:24px;mso-line-height-rule:exactly;color:#64748b;margin:0;max-width:48=
+0px;">V=C3=A1=C5=BEen=C3=BD/=C3=A1 Adam, Va=C5=A1e objedn=C3=A1vka =C4=8D. =
+<strong style=3D"color:#0088CE;">29968509</strong> byla =C3=BAsp=C4=9B=C5=
+=A1n=C4=9B p=C5=99ijata.</p></td></tr><!-- TIMELINE --><tr><td style=3D"pad=
+ding:24px 40px 30px 40px;" class=3D"mobile-padding"><table border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" width=3D"100%"><tr><td width=3D"80" align=
+=3D"center" valign=3D"top"><!--[if mso]><table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0"><tr><td width=3D"32" height=3D"32" bgcolor=3D"#0088CE"=
+ style=3D"border-radius:16px;text-align:center;"><span style=3D"font-family=
+:Arial,sans-serif;font-size:16px;color:#ffffff;line-height:32px;">&#10003;<=
+/span></td></tr></table><![endif]--><!--[if !mso]><!--><div style=3D"width:=
+32px;height:32px;background-color:#0088CE;border-radius:50%;text-align:cent=
+er;line-height:32px;mso-line-height-rule:exactly;margin:0 auto;"><span styl=
+e=3D"font-family:Arial,sans-serif;font-size:16px;color:#ffffff;">&#10003;</=
+span></div><!--<![endif]--><div style=3D"padding-top:8px;font-family:Arial,=
+sans-serif;font-size:12px;font-weight:bold;color:#0088CE;text-align:center;=
+">POTVRZENO</div></td><td valign=3D"top" style=3D"padding-top:15px;"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"><tr><td st=
+yle=3D"border-top:2px solid #0088CE;"></td></tr></table></td><td width=3D"8=
+0" align=3D"center" valign=3D"top"><!--[if mso]><table border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0"><tr><td width=3D"32" height=3D"32" bgcolor=3D"=
+#e2e8f0" style=3D"border-radius:16px;text-align:center;"><span style=3D"fon=
+t-family:Arial,sans-serif;font-size:14px;color:#94a3b8;line-height:32px;">2=
+</span></td></tr></table><![endif]--><!--[if !mso]><!--><div style=3D"width=
+:32px;height:32px;background-color:#e2e8f0;border-radius:50%;text-align:cen=
+ter;line-height:32px;mso-line-height-rule:exactly;margin:0 auto;"><span sty=
+le=3D"font-family:Arial,sans-serif;font-size:14px;color:#94a3b8;">2</span><=
+/div><!--<![endif]--><div style=3D"padding-top:8px;font-family:Arial,sans-s=
+erif;font-size:12px;color:#94a3b8;text-align:center;">ODESL=C3=81NO</div></=
+td><td valign=3D"top" style=3D"padding-top:15px;"><table border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%"><tr><td style=3D"border-top:2=
+px solid #e2e8f0;"></td></tr></table></td><td width=3D"80" align=3D"center"=
+ valign=3D"top"><!--[if mso]><table border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0"><tr><td width=3D"32" height=3D"32" bgcolor=3D"#e2e8f0" style=3D"b=
+order-radius:16px;text-align:center;"><span style=3D"font-family:Arial,sans=
+-serif;font-size:14px;color:#94a3b8;line-height:32px;">3</span></td></tr></=
+table><![endif]--><!--[if !mso]><!--><div style=3D"width:32px;height:32px;b=
+ackground-color:#e2e8f0;border-radius:50%;text-align:center;line-height:32p=
+x;mso-line-height-rule:exactly;margin:0 auto;"><span style=3D"font-family:A=
+rial,sans-serif;font-size:14px;color:#94a3b8;">3</span></div><!--<![endif]-=
+-><div style=3D"padding-top:8px;font-family:Arial,sans-serif;font-size:12px=
+;color:#94a3b8;text-align:center;">DORU=C4=8CENO</div></td></tr></table></t=
+d></tr><!-- BUTTON --><tr><td align=3D"center" valign=3D"top" style=3D"padd=
+ing:0 40px 30px 40px;" class=3D"mobile-padding"><table border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0"><tr><td align=3D"center" style=3D"background-c=
+olor:#0088CE;border-radius:8px;"><!--[if mso]><v:roundrect xmlns:v=3D"urn:s=
+chemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word"=
+ href=3D"https://orders-f.baselinker.com/29968509/6yoj3nytoz/" style=3D"hei=
+ght:48px;v-text-anchor:middle;width:200px;" arcsize=3D"10%" strokecolor=3D"=
+#0088CE" fillcolor=3D"#0088CE"><w:anchorlock/><center style=3D"color:#fffff=
+f;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">Sledovat s=
+tav</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href=3D"https:/=
+/orders-f.baselinker.com/29968509/6yoj3nytoz/" target=3D"_blank" style=3D"d=
+isplay:inline-block;padding:14px 36px;font-family:Arial,Helvetica,sans-seri=
+f;font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none;backgr=
+ound-color:#0088CE;border-radius:8px;">Sledovat stav</a><!--<![endif]--></t=
+d></tr></table></td></tr><!-- DIVIDER --><tr><td style=3D"padding:0 40px;" =
+class=3D"mobile-padding"><table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%"><tr><td style=3D"border-top:1px solid #e2e8f0;"></td>=
+</tr></table></td></tr><!-- PRODUCTS HEADER --><tr><td style=3D"padding:25p=
+x 40px 16px 40px;" class=3D"mobile-padding"><p style=3D"font-family:Arial,H=
+elvetica,sans-serif;font-size:12px;font-weight:bold;color:#94a3b8;letter-sp=
+acing:1px;margin:0;">VA=C5=A0E OBJEDN=C3=81VKA</p></td></tr><tr><td style=
+=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"background-col=
+or:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><td width=3D"55=
+" style=3D"padding:10px;vertical-align:middle;"><img src=3D"https://jumpsaf=
+e.eu/mail-images/182464000946.png" alt=3D"Pokrivni ponjava - R30 =E2=80=93 =
+Mini Round" width=3D"45" height=3D"45" style=3D"display:block;border-radius=
+:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;font-family=
+:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-weight:bold;c=
+olor:#334155;margin:0 0 2px 0;line-height:1.25;">Pokrivni ponjava - R30 =E2=
+=80=93 Mini Round</p><p style=3D"font-size:11px;color:#64748b;margin:0;">Mn=
+o=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:right;ver=
+tical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sans-seri=
+f;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;margin:0;">14=
+9.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000953.png" alt=3D"Pokrivni ponjava - O=
+47 =E2=80=93 Compact Oval" width=3D"45" height=3D"45" style=3D"display:bloc=
+k;border-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:mid=
+dle;font-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;fon=
+t-weight:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Pokrivni po=
+njava - O47 =E2=80=93 Compact Oval</p><p style=3D"font-size:11px;color:#647=
+48b;margin:0;">Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;tex=
+t-align:right;vertical-align:middle;white-space:nowrap;font-family:Arial,He=
+lvetica,sans-serif;"><p style=3D"font-size:13px;font-weight:bold;color:#008=
+8CE;margin:0;">149.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000397.png" alt=3D"Pokrivni ponjava - O=
+77 - Medium Oval" width=3D"45" height=3D"45" style=3D"display:block;border-=
+radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;font-=
+family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-weight:=
+bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Pokrivni ponjava - O=
+77 - Medium Oval</p><p style=3D"font-size:11px;color:#64748b;margin:0;">Mno=
+=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:right;vert=
+ical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sans-serif=
+;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;margin:0;">199=
+.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000304.png" alt=3D"Pokrivni ponjava - R=
+54 - Compact Round" width=3D"45" height=3D"45" style=3D"display:block;borde=
+r-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;fon=
+t-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-weigh=
+t:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Pokrivni ponjava -=
+ R54 - Compact Round</p><p style=3D"font-size:11px;color:#64748b;margin:0;"=
+>Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:right;=
+vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sans-s=
+erif;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;margin:0;"=
+>149.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000311.png" alt=3D"Pokrivni ponjava - R=
+79 - Medium Round" width=3D"45" height=3D"45" style=3D"display:block;border=
+-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;font=
+-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-weight=
+:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Pokrivni ponjava - =
+R79 - Medium Round</p><p style=3D"font-size:11px;color:#64748b;margin:0;">M=
+no=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:right;ve=
+rtical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sans-ser=
+if;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;margin:0;">1=
+49.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000328.png" alt=3D"Pokrivni ponjava - O=
+92 - Large Oval" width=3D"45" height=3D"45" style=3D"display:block;border-r=
+adius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;font-f=
+amily:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-weight:b=
+old;color:#334155;margin:0 0 2px 0;line-height:1.25;">Pokrivni ponjava - O9=
+2 - Large Oval</p><p style=3D"font-size:11px;color:#64748b;margin:0;">Mno=
+=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:right;vert=
+ical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sans-serif=
+;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;margin:0;">199=
+.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000335.png" alt=3D"Pokrivni ponjava - S=
+113 - Large Square" width=3D"45" height=3D"45" style=3D"display:block;borde=
+r-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;fon=
+t-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-weigh=
+t:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Pokrivni ponjava -=
+ S113 - Large Square</p><p style=3D"font-size:11px;color:#64748b;margin:0;"=
+>Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:right;=
+vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sans-s=
+erif;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;margin:0;"=
+>249.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000359.png" alt=3D"Pokrivni ponjava - R=
+132 - Jumbo Round" width=3D"45" height=3D"45" style=3D"display:block;border=
+-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;font=
+-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-weight=
+:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Pokrivni ponjava - =
+R132 - Jumbo Round</p><p style=3D"font-size:11px;color:#64748b;margin:0;">M=
+no=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:right;ve=
+rtical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sans-ser=
+if;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;margin:0;">2=
+49.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000922.png" alt=3D"Son=C4=8Dna zaslonka=
+ - Mini Round (R30)" width=3D"45" height=3D"45" style=3D"display:block;bord=
+er-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;fo=
+nt-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-weig=
+ht:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Son=C4=8Dna zaslo=
+nka - Mini Round (R30)</p><p style=3D"font-size:11px;color:#64748b;margin:0=
+;">Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:righ=
+t;vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sans=
+-serif;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;margin:0=
+;">149.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000939.png" alt=3D"Son=C4=8Dna zaslonka=
+ - Compact Oval (O47)" width=3D"45" height=3D"45" style=3D"display:block;bo=
+rder-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;=
+font-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-we=
+ight:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Son=C4=8Dna zas=
+lonka - Compact Oval (O47)</p><p style=3D"font-size:11px;color:#64748b;marg=
+in:0;">Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:=
+right;vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,=
+sans-serif;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;marg=
+in:0;">149.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000458.png" alt=3D"Son=C4=8Dna zaslonka=
+ - Compact Round (R54)" width=3D"45" height=3D"45" style=3D"display:block;b=
+order-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle=
+;font-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-w=
+eight:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Son=C4=8Dna za=
+slonka - Compact Round (R54)</p><p style=3D"font-size:11px;color:#64748b;ma=
+rgin:0;">Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-alig=
+n:right;vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetic=
+a,sans-serif;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;ma=
+rgin:0;">149.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000465.png" alt=3D"Son=C4=8Dna zaslonka=
+ - Medium Round (R79)" width=3D"45" height=3D"45" style=3D"display:block;bo=
+rder-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;=
+font-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-we=
+ight:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Son=C4=8Dna zas=
+lonka - Medium Round (R79)</p><p style=3D"font-size:11px;color:#64748b;marg=
+in:0;">Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:=
+right;vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,=
+sans-serif;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;marg=
+in:0;">149.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000489.png" alt=3D"Son=C4=8Dna zaslonka=
+ - Medium Oval (O77)" width=3D"45" height=3D"45" style=3D"display:block;bor=
+der-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;f=
+ont-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-wei=
+ght:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Son=C4=8Dna zasl=
+onka - Medium Oval (O77)</p><p style=3D"font-size:11px;color:#64748b;margin=
+:0;">Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:ri=
+ght;vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sa=
+ns-serif;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;margin=
+:0;">199.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000496.png" alt=3D"Son=C4=8Dna zaslonka=
+ - Large Oval (O92)" width=3D"45" height=3D"45" style=3D"display:block;bord=
+er-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;fo=
+nt-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-weig=
+ht:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Son=C4=8Dna zaslo=
+nka - Large Oval (O92)</p><p style=3D"font-size:11px;color:#64748b;margin:0=
+;">Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:righ=
+t;vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sans=
+-serif;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;margin:0=
+;">199.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000502.png" alt=3D"Son=C4=8Dna zaslonka=
+ - Large Square (S113)" width=3D"45" height=3D"45" style=3D"display:block;b=
+order-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle=
+;font-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-w=
+eight:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Son=C4=8Dna za=
+slonka - Large Square (S113)</p><p style=3D"font-size:11px;color:#64748b;ma=
+rgin:0;">Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-alig=
+n:right;vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetic=
+a,sans-serif;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;ma=
+rgin:0;">249.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000472.png" alt=3D"Son=C4=8Dna zaslonka=
+ - Jumbo Round (R132)" width=3D"45" height=3D"45" style=3D"display:block;bo=
+rder-radius:4px;"></td><td style=3D"padding:10px 6px;vertical-align:middle;=
+font-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-we=
+ight:bold;color:#334155;margin:0 0 2px 0;line-height:1.25;">Son=C4=8Dna zas=
+lonka - Jumbo Round (R132)</p><p style=3D"font-size:11px;color:#64748b;marg=
+in:0;">Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding:10px;text-align:=
+right;vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,=
+sans-serif;"><p style=3D"font-size:13px;font-weight:bold;color:#0088CE;marg=
+in:0;">249.00 EUR</p></td></tr></table></td></tr>
+<tr><td style=3D"padding:0 40px 12px 40px;" class=3D"mobile-padding"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"b=
+ackground-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><t=
+d width=3D"55" style=3D"padding:10px;vertical-align:middle;"><img src=3D"ht=
+tps://jumpsafe.eu/mail-images/182464000656.png" alt=3D"Medium Oval" width=
+=3D"45" height=3D"45" style=3D"display:block;border-radius:4px;"></td><td s=
+tyle=3D"padding:10px 6px;vertical-align:middle;font-family:Arial,Helvetica,=
+sans-serif;"><p style=3D"font-size:13px;font-weight:bold;color:#334155;marg=
+in:0 0 2px 0;line-height:1.25;">Medium Oval</p><p style=3D"font-size:11px;c=
+olor:#64748b;margin:0;">Mno=C5=BEstv=C3=AD: 1x</p></td><td style=3D"padding=
+:10px;text-align:right;vertical-align:middle;white-space:nowrap;font-family=
+:Arial,Helvetica,sans-serif;"><p style=3D"font-size:13px;font-weight:bold;c=
+olor:#0088CE;margin:0;">1549.00 EUR</p></td></tr></table></td></tr><!-- TOT=
+AL --><tr><td style=3D"padding:15px 40px 30px 40px;" class=3D"mobile-paddin=
+g"><!--[if mso]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"100%" bgcolor=3D"#0088CE"><tr><td align=3D"center" style=3D"padding:2=
+2px;font-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:12px;col=
+or:#ffffff;margin:0 0 6px 0;letter-spacing:1px;">CELKEM K =C3=9AHRAD=C4=9A<=
+/p><p style=3D"font-size:26px;font-weight:bold;color:#ffffff;margin:0;">460=
+1.00 EUR</p></td></tr></table><![endif]--><!--[if !mso]><!--><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"backgrou=
+nd-color:#0088CE;border-radius:10px;"><tr><td align=3D"center" style=3D"pad=
+ding:22px;font-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:12=
+px;color:#ffffff;margin:0 0 6px 0;letter-spacing:1px;">CELKEM K =C3=9AHRAD=
+=C4=9A</p><p style=3D"font-size:26px;font-weight:bold;color:#ffffff;margin:=
+0;" class=3D"mobile-total">4601.00 EUR</p></td></tr></table><!--<![endif]--=
+></td></tr><!-- DIVIDER --><tr><td style=3D"padding:0 40px;" class=3D"mobil=
+e-padding"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%"><tr><td style=3D"border-top:1px solid #e2e8f0;"></td></tr></table></=
+td></tr><!-- DELIVERY INFO --><tr><td style=3D"padding:25px 40px 16px 40px;=
+" class=3D"mobile-padding"><p style=3D"font-family:Arial,Helvetica,sans-ser=
+if;font-size:12px;font-weight:bold;color:#94a3b8;letter-spacing:1px;margin:=
+0;">DODAC=C3=8D =C3=9ADAJE</p></td></tr><!-- ADDRESSES (2 columns on deskto=
+p, stacked on mobile) --><tr><td style=3D"padding:0 30px 10px 30px;font-siz=
+e:0;text-align:center;" class=3D"mobile-padding"><!--[if mso]><table role=
+=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D=
+"100%" align=3D"center"><tr><td width=3D"260" valign=3D"top"><![endif]--><d=
+iv style=3D"display:inline-block;width:100%;max-width:260px;vertical-align:=
+top;font-size:14px;padding:5px;"><table border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" width=3D"100%" style=3D"background-color:#f8fafc;border-radiu=
+s:8px;"><tr><td style=3D"padding:14px 16px;font-family:Arial,Helvetica,sans=
+-serif;"><p style=3D"font-size:11px;color:#94a3b8;margin:0 0 5px 0;font-wei=
+ght:bold;">FAKTURA=C4=8CN=C3=8D ADRESA</p><p style=3D"font-size:13px;color:=
+#334155;margin:0;line-height:18px;mso-line-height-rule:exactly;">Adam test =
+Forgac test<br>K=C3=A1rp=C3=A1t u. 81. testomg<br>8485 Dabrony<br>Slovinsko=
+</p></td></tr></table></div><!--[if mso]></td><td width=3D"260" valign=3D"t=
+op"><![endif]--><div style=3D"display:inline-block;width:100%;max-width:260=
+px;vertical-align:top;font-size:14px;padding:5px;"><table border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"background-color:#f=
+8fafc;border-radius:8px;"><tr><td style=3D"padding:14px 16px;font-family:Ar=
+ial,Helvetica,sans-serif;"><p style=3D"font-size:11px;color:#94a3b8;margin:=
+0 0 5px 0;font-weight:bold;">DORU=C4=8COVAC=C3=8D ADRESA</p><p style=3D"fon=
+t-size:13px;color:#334155;margin:0;line-height:18px;mso-line-height-rule:ex=
+actly;">Adam Forg=C3=A1=C4=8D<br>Dlouh=C3=A9 d=C3=ADly 380<br>1211 Zl=C3=AD=
+n<br>Slovinsko</p></td></tr></table></div><!--[if mso]></td></tr></table><!=
+[endif]--></td></tr><!-- PAYMENT & SHIPPING (2 columns) --><tr><td style=3D=
+"padding:0 30px 20px 30px;font-size:0;text-align:center;" class=3D"mobile-p=
+adding"><!--[if mso]><table role=3D"presentation" border=3D"0" cellspacing=
+=3D"0" cellpadding=3D"0" width=3D"100%" align=3D"center"><tr><td width=3D"2=
+60" valign=3D"top"><![endif]--><div style=3D"display:inline-block;width:100=
+%;max-width:260px;vertical-align:top;font-size:14px;padding:5px;"><table bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"back=
+ground-color:#f8fafc;border-radius:8px;"><tr><td style=3D"padding:14px 16px=
+;font-family:Arial,Helvetica,sans-serif;"><p style=3D"font-size:11px;color:=
+#94a3b8;margin:0 0 4px 0;font-weight:bold;">PLATBA</p><p style=3D"font-size=
+:13px;color:#0088CE;margin:0;font-weight:bold;">Z ban=C4=8Dnim nakazilom</p=
+></td></tr></table></div><!--[if mso]></td><td width=3D"260" valign=3D"top"=
+><![endif]--><div style=3D"display:inline-block;width:100%;max-width:260px;=
+vertical-align:top;font-size:14px;padding:5px;"><table border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"background-color:#f8fa=
+fc;border-radius:8px;"><tr><td style=3D"padding:14px 16px;font-family:Arial=
+,Helvetica,sans-serif;"><p style=3D"font-size:11px;color:#94a3b8;margin:0 0=
+ 4px 0;font-weight:bold;">DOPRAVA</p><p style=3D"font-size:13px;color:#0088=
+CE;margin:0;font-weight:bold;">Dostava po kurirju</p></td></tr></table></di=
+v><!--[if mso]></td></tr></table><![endif]--></td></tr><!-- DIVIDER --><tr>=
+<td style=3D"padding:0 40px;" class=3D"mobile-padding"><table border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"><tr><td style=3D"border-=
+top:1px solid #e2e8f0;"></td></tr></table></td></tr><!-- CONTACT SECTION --=
+><tr><td style=3D"padding:25px 40px;" class=3D"mobile-padding"><table borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"backgro=
+und-color:#f0f9ff;border-radius:8px;border-left:4px solid #0088CE;"><tr><td=
+ style=3D"padding:18px 20px;font-family:Arial,Helvetica,sans-serif;"><p sty=
+le=3D"font-size:14px;font-weight:bold;color:#334155;margin:0 0 6px 0;">Pot=
+=C5=99ebujete poradit?</p><p style=3D"font-size:13px;color:#64748b;margin:0=
+;line-height:20px;mso-line-height-rule:exactly;">Jsme tu pro V=C3=A1s. Zavo=
+lejte n=C3=A1m na <a href=3D"tel:+420777559607" style=3D"color:#0088CE;text=
+-decoration:none;font-weight:bold;">+420 777 559 607</a> nebo napi=C5=A1te =
+na <a href=3D"mailto:springfree@jumpsafe.eu" style=3D"color:#0088CE;text-de=
+coration:none;font-weight:bold;">springfree@jumpsafe.eu</a></p></td></tr></=
+table></td></tr><!-- DIVIDER --><tr><td style=3D"padding:0 40px;" class=3D"=
+mobile-padding"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"100%"><tr><td style=3D"border-top:1px solid #e2e8f0;"></td></tr></tab=
+le></td></tr><!-- UPSELL SECTION --><tr><td style=3D"padding:25px 40px 16px=
+ 40px;" class=3D"mobile-padding"><p style=3D"font-family:Arial,Helvetica,sa=
+ns-serif;font-size:12px;font-weight:bold;color:#94a3b8;letter-spacing:1px;m=
+argin:0 0 6px 0;">NEZAPOMN=C4=9ALI JSTE NA N=C4=9ACO?</p><p style=3D"font-f=
+amily:Arial,Helvetica,sans-serif;font-size:13px;color:#64748b;margin:0;line=
+-height:20px;mso-line-height-rule:exactly;">Pokud je je=C5=A1t=C4=9B nem=C3=
+=A1te, st=C3=A1le je m=C5=AF=C5=BEete p=C5=99idat. Objednejte te=C4=8F a po=
+=C5=A1leme v=C5=A1e spole=C4=8Dn=C4=9B.</p></td></tr><!-- UPSELL PRODUCTS (=
+2 columns on desktop, stacked on mobile) --><tr><td style=3D"padding:0 30px=
+ 10px 30px;font-size:0;text-align:center;" class=3D"mobile-padding"><!--[if=
+ mso]><table role=3D"presentation" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" align=3D"center"><tr><td width=3D"260" valign=3D"to=
+p"><![endif]--><div style=3D"display:inline-block;width:100%;max-width:260p=
+x;vertical-align:top;font-size:14px;padding:5px;"><table border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"background-color:#f8=
+fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><td align=3D"center" =
+style=3D"padding:14px 14px 10px 14px;"><img src=3D"https://jumpsafe.eu/mail=
+-images/182464000243.png" alt=3D"Basketbalov=C3=BD ko=C5=A1 FlexrHoop" widt=
+h=3D"80" height=3D"80" style=3D"display:block;border-radius:6px;"></td></tr=
+><tr><td align=3D"center" style=3D"padding:0 14px;font-family:Arial,Helveti=
+ca,sans-serif;"><p style=3D"font-size:12px;font-weight:bold;color:#334155;m=
+argin:0 0 3px 0;">Basketbalov=C3=BD ko=C5=A1 FlexrHoop</p></td></tr><tr><td=
+ align=3D"center" style=3D"padding:10px 14px 14px 14px;"><a href=3D"https:/=
+/www.trampoliny-springfree.cz/produkt/basketbalovy-kos-flexrhoop/" target=
+=3D"_blank" style=3D"display:inline-block;padding:8px 16px;font-family:Aria=
+l,sans-serif;font-size:11px;font-weight:bold;color:#0088CE;text-decoration:=
+none;background-color:#ffffff;border:2px solid #0088CE;border-radius:5px;">=
+P=C5=99idat</a></td></tr></table></div><!--[if mso]></td><td width=3D"260" =
+valign=3D"top"><![endif]--><div style=3D"display:inline-block;width:100%;ma=
+x-width:260px;vertical-align:top;font-size:14px;padding:5px;"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"backgrou=
+nd-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><td align=
+=3D"center" style=3D"padding:14px 14px 10px 14px;"><img src=3D"https://jump=
+safe.eu/mail-images/182464000922.png" alt=3D"Slune=C4=8Dn=C3=AD clona" widt=
+h=3D"80" height=3D"80" style=3D"display:block;border-radius:6px;"></td></tr=
+><tr><td align=3D"center" style=3D"padding:0 14px;font-family:Arial,Helveti=
+ca,sans-serif;"><p style=3D"font-size:12px;font-weight:bold;color:#334155;m=
+argin:0 0 3px 0;">Slune=C4=8Dn=C3=AD clona</p></td></tr><tr><td align=3D"ce=
+nter" style=3D"padding:10px 14px 14px 14px;"><a href=3D"https://www.trampol=
+iny-springfree.cz/produkt/slunecni-clona/" target=3D"_blank" style=3D"displ=
+ay:inline-block;padding:8px 16px;font-family:Arial,sans-serif;font-size:11p=
+x;font-weight:bold;color:#0088CE;text-decoration:none;background-color:#fff=
+fff;border:2px solid #0088CE;border-radius:5px;">P=C5=99idat</a></td></tr><=
+/table></div><!--[if mso]></td></tr></table><![endif]--></td></tr><tr><td s=
+tyle=3D"padding:0 30px 15px 30px;font-size:0;text-align:center;" class=3D"m=
+obile-padding"><!--[if mso]><table role=3D"presentation" border=3D"0" cells=
+pacing=3D"0" cellpadding=3D"0" width=3D"100%" align=3D"center"><tr><td widt=
+h=3D"260" valign=3D"top"><![endif]--><div style=3D"display:inline-block;wid=
+th:100%;max-width:260px;vertical-align:top;font-size:14px;padding:5px;"><ta=
+ble border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=
+=3D"background-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><=
+tr><td align=3D"center" style=3D"padding:14px 14px 10px 14px;"><img src=3D"=
+https://jumpsafe.eu/mail-images/182464000946.png" alt=3D"Kryc=C3=AD plachta=
+" width=3D"80" height=3D"80" style=3D"display:block;border-radius:6px;"></t=
+d></tr><tr><td align=3D"center" style=3D"padding:0 14px;font-family:Arial,H=
+elvetica,sans-serif;"><p style=3D"font-size:12px;font-weight:bold;color:#33=
+4155;margin:0 0 3px 0;">Kryc=C3=AD plachta</p></td></tr><tr><td align=3D"ce=
+nter" style=3D"padding:10px 14px 14px 14px;"><a href=3D"https://www.trampol=
+iny-springfree.cz/produkt/kryci-plachta/" target=3D"_blank" style=3D"displa=
+y:inline-block;padding:8px 16px;font-family:Arial,sans-serif;font-size:11px=
+;font-weight:bold;color:#0088CE;text-decoration:none;background-color:#ffff=
+ff;border:2px solid #0088CE;border-radius:5px;">P=C5=99idat</a></td></tr></=
+table></div><!--[if mso]></td><td width=3D"260" valign=3D"top"><![endif]-->=
+<div style=3D"display:inline-block;width:100%;max-width:260px;vertical-alig=
+n:top;font-size:14px;padding:5px;"><table border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" width=3D"100%" style=3D"background-color:#f8fafc;border-rad=
+ius:8px;border:1px solid #e2e8f0;"><tr><td align=3D"center" style=3D"paddin=
+g:14px 14px 10px 14px;"><img src=3D"https://jumpsafe.eu/mail-images/1824640=
+00236.png" alt=3D"Pojezdov=C3=A1 kola" width=3D"80" height=3D"80" style=3D"=
+display:block;border-radius:6px;"></td></tr><tr><td align=3D"center" style=
+=3D"padding:0 14px;font-family:Arial,Helvetica,sans-serif;"><p style=3D"fon=
+t-size:12px;font-weight:bold;color:#334155;margin:0 0 3px 0;">Pojezdov=C3=
+=A1 kola</p></td></tr><tr><td align=3D"center" style=3D"padding:10px 14px 1=
+4px 14px;"><a href=3D"https://www.trampoliny-springfree.cz/produkt/pojezdov=
+a-kola/" target=3D"_blank" style=3D"display:inline-block;padding:8px 16px;f=
+ont-family:Arial,sans-serif;font-size:11px;font-weight:bold;color:#0088CE;t=
+ext-decoration:none;background-color:#ffffff;border:2px solid #0088CE;borde=
+r-radius:5px;">P=C5=99idat</a></td></tr></table></div><!--[if mso]></td></t=
+r></table><![endif]--></td></tr><!-- MORE PRODUCTS --><tr><td align=3D"cent=
+er" style=3D"padding:0 40px 35px 40px;" class=3D"mobile-padding"><p style=
+=3D"font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#64748b;mar=
+gin:0;"><a href=3D"https://www.trampoliny-springfree.cz/doplnky/" target=3D=
+"_blank" style=3D"color:#0088CE;text-decoration:none;font-weight:bold;">...=
+a mnoho dal=C5=A1=C3=ADho p=C5=99=C3=ADslu=C5=A1enstv=C3=AD</a></p></td></t=
+r></table><!--[if mso]></td></tr></table><![endif]--><!-- FOOTER --><table =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"ma=
+x-width:600px;" class=3D"mobile-wrapper"><tr><td align=3D"center" style=3D"=
+padding:25px 40px;" class=3D"mobile-padding"><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%"><tr><td align=3D"center" style=3D"=
+padding-bottom:14px;"><img src=3D"https://jumpsafe.eu/mail-images/springfre=
+e-logo-blue.png" width=3D"80" style=3D"display:block;"></td></tr><tr><td al=
+ign=3D"center" style=3D"font-family:Arial,Helvetica,sans-serif;font-size:12=
+px;color:#94a3b8;padding-bottom:6px;">Springfree Trampoline | springfree@ju=
+mpsafe.eu | +420 777 559 607</td></tr><tr><td align=3D"center" style=3D"fon=
+t-family:Arial,Helvetica,sans-serif;font-size:11px;color:#94a3b8;">=C2=A9 2=
+026 Springfree Trampoline. V=C5=A1echna pr=C3=A1va vyhrazena.</td></tr></ta=
+ble></td></tr></table></td></tr></table></body></html>  <div style=3D"borde=
+r-top: 1px solid var(--gray-100, #fcfcfc); padding: 3px 10px; margin-top: 1=
+0px;">
+    <p style=3D"font-family: Arial; color: var(--gray-700, #69737E); font-s=
+ize: 13px;">Sent by <a style=3D"color: var(--brand-primary-600, #0077DA); t=
+ext-decoration: none; font-weight: bold;" href=3D"https://baselinker.com/?u=
+tm_campaign=3Dtext&;utm_source=3Dmailer-footer">Base.com</a></p>
+  </div>
+
+--b1=_7lNu28X1DUxEZNhC3JlyDjRCCJ92HF2XjQplfXFc30--

@@ -1,0 +1,123 @@
+{
+  "translations": {
+    "email_title_order": {
+      "cs": "Potvrzení objednávky",
+      "sk": "Potvrdenie objednávky",
+      "pl": "Potwierdzenie zamówienia",
+      "hu": "Rendelés visszaigazolása",
+      "de": "Bestellbestätigung",
+      "hr": "Potvrda narudžbe",
+      "sl": "Potrditev naročila"
+    },
+    "order_received_text": {
+      "cs": "Děkujeme za Váš nákup! Vaše objednávka byla úspěšně přijata.",
+      "sk": "Ďakujeme za Váš nákup! Vaša objednávka bola úspešne prijatá.",
+      "pl": "Dziękujemy za zakupy! Twoje zamówienie zostało pomyślnie przyjęte.",
+      "hu": "Köszönjük a vásárlást! Rendelését sikeresen megkaptuk.",
+      "de": "Vielen Dank für Ihren Einkauf! Ihre Bestellung ist erfolgreich eingegangen.",
+      "hr": "Hvala na kupnji! Vaša narudžba je uspješno zaprimljena.",
+      "sl": "Hvala za vaš nakup! Vaše naročilo je bilo uspešno prejeto."
+    },
+    "track_order_btn": {
+      "cs": "Sledovat stav objednávky",
+      "sk": "Sledovať stav objednávky",
+      "pl": "Śledź status zamówienia",
+      "hu": "Rendelés követése",
+      "de": "Bestellstatus verfolgen",
+      "hr": "Prati status narudžbe",
+      "sl": "Sledi statusu naročila"
+    },
+    "billing_address_title": {
+      "cs": "Fakturační adresa",
+      "sk": "Fakturačná adresa",
+      "pl": "Adres rozliczeniowy",
+      "hu": "Számlázási cím",
+      "de": "Rechnungsadresse",
+      "hr": "Adresa za naplatu",
+      "sl": "Naslov za račun"
+    },
+    "shipping_address_title": {
+      "cs": "Doručovací adresa",
+      "sk": "Doručovacia adresa",
+      "pl": "Adres dostawy",
+      "hu": "Szállítási cím",
+      "de": "Lieferadresse",
+      "hr": "Adresa za dostavu",
+      "sl": "Naslov za dostavo"
+    },
+    "payment_method_label": {
+      "cs": "Platba:",
+      "sk": "Platba:",
+      "pl": "Płatność:",
+      "hu": "Fizetés:",
+      "de": "Zahlung:",
+      "hr": "Plaćanje:",
+      "sl": "Plačilo:"
+    },
+    "shipping_method_label": {
+      "cs": "Doprava:",
+      "sk": "Doprava:",
+      "pl": "Dostawa:",
+      "hu": "Szállítás:",
+      "de": "Versand:",
+      "hr": "Dostava:",
+      "sl": "Dostava:"
+    },
+    "order_summary_title": {
+      "cs": "Rekapitulace objednávky",
+      "sk": "Rekapitulácia objednávky",
+      "pl": "Podsumowanie zamówienia",
+      "hu": "Rendelés összesítése",
+      "de": "Bestellübersicht",
+      "hr": "Sažetak narudžbe",
+      "sl": "Povzetek naročila"
+    },
+    "qty_label": {
+      "cs": "Množství",
+      "sk": "Množstvo",
+      "pl": "Ilość",
+      "hu": "Mennyiség",
+      "de": "Menge",
+      "hr": "Količina",
+      "sl": "Količina"
+    },
+    "total_price_label": {
+      "cs": "Celková cena:",
+      "sk": "Celková cena:",
+      "pl": "Cena całkowita:",
+      "hu": "Teljes ár:",
+      "de": "Gesamtpreis:",
+      "hr": "Ukupna cijena:",
+      "sl": "Skupna cena:"
+    },
+    "footer_contact_title": {
+      "cs": "Potřebujete poradit?",
+      "sk": "Potrebujete poradiť?",
+      "pl": "Potrzebujesz pomocy?",
+      "hu": "Segítségre van szüksége?",
+      "de": "Brauchen Sie Hilfe?",
+      "hr": "Trebate pomoć?",
+      "sl": "Potrebujete pomoč?"
+    },
+    "footer_rights": {
+      "cs": "© 2026 Springfree Trampoline. Všechna práva vyhrazena.",
+      "sk": "© 2026 Springfree Trampoline. Všetky práva vyhradené.",
+      "pl": "© 2026 Springfree Trampoline. Wszelkie prawa zastrzeżone.",
+      "hu": "© 2026 Springfree Trampoline. Minden jog fenntartva.",
+      "de": "© 2026 Springfree Trampoline. Alle Rechte vorbehalten.",
+      "hr": "© 2026 Springfree Trampoline. Sva prava pridržana.",
+      "sl": "© 2026 Springfree Trampoline. Vse pravice pridržane."
+    },
+    "links": {
+      "shop_url": {
+        "cs": "https://www.springfree.cz",
+        "sk": "https://www.springfree.sk",
+        "pl": "https://www.springfree.pl",
+        "hu": "https://www.springfree.hu",
+        "de": "https://www.springfree.de",
+        "hr": "https://www.springfree.hr",
+        "sl": "https://www.springfree.si"
+      }
+    }
+  }
+}

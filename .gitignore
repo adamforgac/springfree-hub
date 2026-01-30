@@ -1,0 +1,69 @@
+# Environment variables (contains API keys!)
+.env
+.env.local
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build output
+.next/
+out/
+dist/
+build/
+
+# Testing
+coverage/
+.nyc_output/
+
+# OS files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Misc
+.cache/
+*.pid
+*.seed
+*.pid.lock
+
+# Claude Code (local settings)
+.claude/
+
+# Playwright MCP
+.playwright-mcp/
+
+# Screenshots (development only, bloats repo)
+Web-screenshots/
+manual-screenshots/
+
+# Reference images (if too large)
+# refference-images/

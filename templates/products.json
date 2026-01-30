@@ -1,0 +1,63 @@
+[
+  {
+    "id": "flexrhoop",
+    "sku": "182464000243",
+    "name": {
+      "cs": "Basketbalový koš FlexrHoop",
+      "sk": "Basketbalový kôš FlexrHoop",
+      "hu": "FlexrHoop kosárlabda palánk",
+      "ro": "Coș de baschet FlexrHoop"
+    },
+    "price": {
+      "cs": "4 490 Kč",
+      "eur": "189 €",
+      "ron": "940 Lei",
+      "huf": "75 900 Ft"
+    },
+    "link": {
+      "cs": "https://www.trampoliny-springfree.cz/produkt/basketbalovy-kos-flexrhoop/",
+      "sk": "https://www.springfree.sk/produkt/basketbalovy-kos-flexrhoop/"
+    }
+  },
+  {
+    "id": "sunshade",
+    "sku": "182464000922",
+    "name": {
+      "cs": "Sluneční clona",
+      "sk": "Slnečná clona"
+    },
+    "price": {
+      "cs": "od 3 790 Kč",
+      "eur": "od 159 €"
+    },
+    "link": {
+      "cs": "https://www.trampoliny-springfree.cz/produkt/slunecni-clona/"
+    }
+  },
+  {
+    "id": "cover",
+    "sku": "182464000946",
+    "name": {
+      "cs": "Krycí plachta"
+    },
+    "price": {
+      "cs": "od 3 490 Kč"
+    },
+    "link": {
+      "cs": "https://www.trampoliny-springfree.cz/produkt/kryci-plachta/"
+    }
+  },
+  {
+    "id": "wheels",
+    "sku": "182464000236",
+    "name": {
+      "cs": "Pojezdová kola"
+    },
+    "price": {
+      "cs": "2 490 Kč"
+    },
+    "link": {
+      "cs": "https://www.trampoliny-springfree.cz/produkt/pojezdova-kola/"
+    }
+  }
+]
