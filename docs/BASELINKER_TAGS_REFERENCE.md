@@ -59,7 +59,8 @@ https://jumpsafe.eu/mail-images/182464000946.png
 | `[číslo_objednávky_warehouse]` | Warehouse order number |
 | `[order_aa_last_error]` | Last automation error |
 | `[order_hash]` | Order hash |
-| `[odkaz_na_objednávku]` | Order tracking link |
+| `[odkaz_na_objednávku]` | Order tracking link (default) |
+| `[odkaz_na_objednávku_68172]` | **CUSTOM: Order status page link (Springfree)** - USE THIS! |
 | `[products_photo_link]` | Products photo link |
 
 ## Client Tags

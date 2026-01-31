@@ -124,8 +124,8 @@ u+#body a{color:inherit;text-decoration:none;}
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td align="center" style="background-color:#0088CE;border-radius:8px;">
-<!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="[odkaz_na_objednávku]" style="height:48px;v-text-anchor:middle;width:200px;" arcsize="10%" strokecolor="#0088CE" fillcolor="#0088CE"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">${t.trackOrder}</center></v:roundrect><![endif]-->
-<!--[if !mso]><!--><a href="[odkaz_na_objednávku]" target="_blank" style="display:inline-block;padding:14px 36px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none;background-color:#0088CE;border-radius:8px;">${t.trackOrder}</a><!--<![endif]-->
+<!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="[odkaz_na_objednávku_68172]" style="height:48px;v-text-anchor:middle;width:200px;" arcsize="10%" strokecolor="#0088CE" fillcolor="#0088CE"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">${t.trackOrder}</center></v:roundrect><![endif]-->
+<!--[if !mso]><!--><a href="[odkaz_na_objednávku_68172]" target="_blank" style="display:inline-block;padding:14px 36px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none;background-color:#0088CE;border-radius:8px;">${t.trackOrder}</a><!--<![endif]-->
 </td>
 </tr>
 </table>
@@ -245,7 +245,7 @@ u+#body a{color:inherit;text-decoration:none;}
 <!-- UPSELL SECTION -->
 <tr>
 <td style="padding:25px 40px 16px 40px;" class="mobile-padding">
-<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;color:#94a3b8;letter-spacing:1px;margin:0 0 6px 0;">${t.upsellTitle.toUpperCase()}</p>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;color:#0088CE;letter-spacing:1px;margin:0 0 6px 0;">${t.upsellTitle.toUpperCase()}</p>
 <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#64748b;margin:0;line-height:20px;">${t.upsellSubtitle}</p>
 </td>
 </tr>

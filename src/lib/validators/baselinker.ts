@@ -10,7 +10,7 @@ export const VALID_ORDER_TAGS = new Set([
   'další_pole_1', 'další_pole_2', 'i__o_97218', 'client_comments', 'sell_comments',
   'číslo_objednávky', 'číslo_objednávky_obchod', 'číslo_objednávky_zdroj',
   'číslo_objednávky_zdroj_2', 'číslo_objednávky_warehouse', 'order_aa_last_error',
-  'order_hash', 'odkaz_na_objednávku', 'products_photo_link',
+  'order_hash', 'odkaz_na_objednávku', 'odkaz_na_objednávku_68172', 'products_photo_link',
 
   // Client Tags
   'e-mail', 'telefon', 'jméno a příjmení', 'jméno', 'příjmení', 'společnost',

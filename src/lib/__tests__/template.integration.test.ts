@@ -71,7 +71,7 @@ describe('Template Integration Tests', () => {
       // Check for essential tags
       expect(html).toContain('[jméno]');
       expect(html).toContain('[číslo_objednávky]');
-      expect(html).toContain('[odkaz_na_objednávku]');
+      expect(html).toContain('[odkaz_na_objednávku_68172]');
       // Product list tag - MUST start with <tr> and end with </tr> (critical for Baselinker!)
       expect(html).toContain('[seznam_položek(<tr>');
       expect(html).toContain('</tr>)]');

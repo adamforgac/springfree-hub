@@ -200,7 +200,7 @@ describe('BaseLinker Validator', () => {
     it('validates real-world template tags', () => {
       // Tags used in the actual template.ts
       const templateTags = [
-        'jméno', 'číslo_objednávky', 'odkaz_na_objednávku',
+        'jméno', 'číslo_objednávky', 'odkaz_na_objednávku_68172',
         'i_sku', 'i_name', 'i_quantity', 'i_price', 'i_currency',
         'cena_za objednávku', 'měna', 'název_faktury_a_příjmení',
         'fakturační adresa', 'faktura_postal_code', 'faktura_city',
