@@ -1,4 +1,4 @@
-import { generateEmailTemplate } from '../src/lib/template';
+import { generateOrderConfirmationEmailTemplate } from '../src/lib/templateOrderConfirmation';
 import { MARKETS, TRANSLATIONS, UPSELL_SKUS } from '../src/lib/markets';
 import { PRODUCT_SKUS } from '../src/lib/product_dictionary';
 import { validateHtmlTemplate } from '../src/lib/validators/html';
@@ -15,7 +15,7 @@ const products = UPSELL_SKUS.map(sku => ({
   link: marketData.websiteUrl + '/produkt/' + sku + '/',
 }));
 
-const html = generateEmailTemplate({ market, products, showPrices: true });
+const html = generateOrderConfirmationEmailTemplate({ market, products, showPrices: true });
 const result = validateHtmlTemplate(html);
 
 console.log('=== HTML VALIDACE PRO EMAIL KLIENTY ===');

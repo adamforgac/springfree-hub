@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateEmailTemplate } from '@/lib/template';
+import { generateBankTransferEmailTemplate } from '@/lib/templateBankTransfer';
+import { generateOrderConfirmationEmailTemplate } from '@/lib/templateOrderConfirmation';
+import { generatePaymentConfirmedEmailTemplate } from '@/lib/templatePaymentConfirmed';
 import { MARKETS, TRANSLATIONS, UPSELL_SKUS } from '@/lib/markets';
 import { MarketCode } from '@/lib/types';
 import { PRODUCT_SKUS } from '@/lib/product_dictionary';
 import { validateTemplate } from '@/lib/validators';
 
+export type TemplateType = 'order-confirmation' | 'order-bank-transfer' | 'payment-confirmed';
+
 interface RequestBody {
   market: MarketCode;
+  templateType?: TemplateType;
   products?: Array<{
     sku: string;
     prices: Record<string, number>;
@@ -17,7 +22,7 @@ interface RequestBody {
 export async function POST(request: NextRequest) {
   try {
     const body: RequestBody = await request.json();
-    const { market, products, showPrices = false } = body;
+    const { market, templateType = 'order-confirmation', products, showPrices = false } = body;
 
     if (!market || !MARKETS.find(m => m.code === market)) {
       return NextResponse.json({ error: 'Invalid market' }, { status: 400 });
@@ -30,13 +35,13 @@ export async function POST(request: NextRequest) {
     const upsellProducts = UPSELL_SKUS.map(sku => {
       const productData = products?.find(p => p.sku === sku);
       const currencyKey = marketData.currency;
-      
+
       // Get price from Baselinker data or use fallback
       let price = productData?.prices?.[currencyKey] || getDefaultPrice(sku, currencyKey);
-      
+
       // Format price with currency symbol
       const formattedPrice = formatPrice(price, currencyKey, marketData.currencySymbol);
-      
+
       // Check if this is a variant product (needs "od" prefix)
       const isVariantProduct = sku === PRODUCT_SKUS.SUNSHADE || sku === PRODUCT_SKUS.COVER;
       const pricePrefix = isVariantProduct ? (market === 'de' ? 'ab ' : market === 'pl' ? 'od ' : 'od ') : '';
@@ -50,11 +55,28 @@ export async function POST(request: NextRequest) {
       };
     });
 
-    const html = generateEmailTemplate({
+    // Generate HTML based on template type
+    const templateData = {
       market,
       products: upsellProducts,
       showPrices,
-    });
+    };
+
+    let html: string;
+    switch (templateType) {
+      case 'order-confirmation':
+        html = generateOrderConfirmationEmailTemplate(templateData);
+        break;
+      case 'order-bank-transfer':
+        html = generateBankTransferEmailTemplate(templateData);
+        break;
+      case 'payment-confirmed':
+        html = generatePaymentConfirmedEmailTemplate(templateData);
+        break;
+      default:
+        html = generateOrderConfirmationEmailTemplate(templateData);
+        break;
+    }
 
     // Minify for Baselinker - keep it simple to avoid breaking tag syntax
     const minified = html
@@ -76,6 +98,7 @@ export async function POST(request: NextRequest) {
       html: minified,
       size: minified.length,
       market,
+      templateType,
       validation: {
         valid: true,
         warnings: validationResult.allWarnings,
