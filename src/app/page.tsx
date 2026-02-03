@@ -4,6 +4,14 @@ import { useState, useEffect } from 'react';
 import { MARKETS } from '@/lib/markets';
 import { MarketCode } from '@/lib/types';
 
+type TemplateType = 'order-confirmation' | 'order-bank-transfer' | 'payment-confirmed';
+
+const TEMPLATE_OPTIONS: { value: TemplateType; label: string; description: string }[] = [
+  { value: 'order-confirmation', label: 'Potvrzeni objednavky', description: 'Email 1 - ihned po objednavce (vsem)' },
+  { value: 'order-bank-transfer', label: 'Ceka se na platbu', description: 'Email 2a - bankovni prevod' },
+  { value: 'payment-confirmed', label: 'Platba potvrzena', description: 'Email 2b - karta nebo prevod prijat' },
+];
+
 interface ProductData {
   sku: string;
   name: string;
@@ -12,6 +20,7 @@ interface ProductData {
 
 export default function Home() {
   const [selectedMarket, setSelectedMarket] = useState<MarketCode>('cs');
+  const [selectedTemplate, setSelectedTemplate] = useState<TemplateType>('order-confirmation');
   const [products, setProducts] = useState<ProductData[]>([]);
   const [previewHtml, setPreviewHtml] = useState<string>('');
   const [loading, setLoading] = useState(false);
@@ -24,12 +33,12 @@ export default function Home() {
     fetchProducts();
   }, []);
 
-  // Generate preview when market changes
+  // Generate preview when market or template changes
   useEffect(() => {
     if (products.length > 0) {
       generatePreview();
     }
-  }, [selectedMarket, products, showPrices]);
+  }, [selectedMarket, selectedTemplate, products, showPrices]);
 
   const fetchProducts = async () => {
     try {
@@ -59,6 +68,7 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           market: selectedMarket,
+          templateType: selectedTemplate,
           products,
           showPrices,
         }),
@@ -86,7 +96,7 @@ export default function Home() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `order-confirmation-${selectedMarket}.html`;
+    a.download = `${selectedTemplate}-${selectedMarket}.html`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -106,6 +116,7 @@ export default function Home() {
   };
 
   const currentMarket = MARKETS.find(m => m.code === selectedMarket);
+  const currentTemplate = TEMPLATE_OPTIONS.find(t => t.value === selectedTemplate);
 
   return (
     <div className="container">
@@ -120,6 +131,28 @@ export default function Home() {
 
       <div className="main-grid">
         <aside className="sidebar">
+          <h2>Typ emailu</h2>
+          <div className="template-list" style={{ marginBottom: '20px' }}>
+            {TEMPLATE_OPTIONS.map((template) => (
+              <button
+                key={template.value}
+                className={`market-btn ${selectedTemplate === template.value ? 'active' : ''}`}
+                onClick={() => setSelectedTemplate(template.value)}
+                style={{ marginBottom: '8px' }}
+              >
+                <span className="flag" style={{ fontSize: '16px' }}>
+                  {template.value === 'order-confirmation' ? '📦' : template.value === 'order-bank-transfer' ? '🏦' : '✅'}
+                </span>
+                <span className="info">
+                  <span className="name">{template.label}</span>
+                  <span className="currency">{template.description}</span>
+                </span>
+              </button>
+            ))}
+          </div>
+
+          <div className="divider" />
+
           <h2>Vyberte trh</h2>
           <div className="market-list">
             {MARKETS.map((market) => (
@@ -197,7 +230,7 @@ export default function Home() {
         <main className="preview-container">
           <div className="preview-header">
             <h3>
-              Preview: {currentMarket?.flag} {currentMarket?.name} ({currentMarket?.currency})
+              {currentTemplate?.label} • {currentMarket?.flag} {currentMarket?.name} ({currentMarket?.currency})
             </h3>
             {loading && <span className="status">Generuji...</span>}
           </div>
