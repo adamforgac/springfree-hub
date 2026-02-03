@@ -51,6 +51,7 @@ export const TRANSLATIONS: Record<MarketCode, {
   timelinePaid: string;
   timelineShipped: string;
   orderReceivedTitle: string;
+  willContactSoon: string;
   yourOrder: string;
   quantity: string;
   totalToPay: string;
@@ -81,6 +82,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     timelinePaid: 'Zaplaceno',
     timelineShipped: 'Odesláno',
     orderReceivedTitle: 'Objednávka přijata',
+    willContactSoon: 'O dalších krocích Vás budeme brzy informovat.',
     yourOrder: 'Vaše objednávka',
     quantity: 'Množství',
     totalToPay: 'Celkem k úhradě',
@@ -115,6 +117,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     timelinePaid: 'Zaplatené',
     timelineShipped: 'Odoslané',
     orderReceivedTitle: 'Objednávka prijatá',
+    willContactSoon: 'O ďalších krokoch Vás budeme čoskoro informovať.',
     yourOrder: 'Vaša objednávka',
     quantity: 'Množstvo',
     totalToPay: 'Celkom k úhrade',
@@ -149,6 +152,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     timelinePaid: 'Bezahlt',
     timelineShipped: 'Versandt',
     orderReceivedTitle: 'Bestellung eingegangen',
+    willContactSoon: 'Wir werden Sie in Kürze über die nächsten Schritte informieren.',
     yourOrder: 'Ihre Bestellung',
     quantity: 'Menge',
     totalToPay: 'Gesamtbetrag',
@@ -183,6 +187,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     timelinePaid: 'Opłacone',
     timelineShipped: 'Wysłane',
     orderReceivedTitle: 'Zamówienie przyjęte',
+    willContactSoon: 'Wkrótce skontaktujemy się z Tobą w sprawie kolejnych kroków.',
     yourOrder: 'Twoje zamówienie',
     quantity: 'Ilość',
     totalToPay: 'Razem do zapłaty',
@@ -217,6 +222,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     timelinePaid: 'Kifizetve',
     timelineShipped: 'Elküldve',
     orderReceivedTitle: 'Rendelés beérkezett',
+    willContactSoon: 'Hamarosan tájékoztatjuk Önt a következő lépésekről.',
     yourOrder: 'Az Ön rendelése',
     quantity: 'Mennyiség',
     totalToPay: 'Fizetendő összeg',
@@ -251,6 +257,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     timelinePaid: 'Plačano',
     timelineShipped: 'Poslano',
     orderReceivedTitle: 'Naročilo sprejeto',
+    willContactSoon: 'Kmalu vas bomo obvestili o nadaljnjih korakih.',
     yourOrder: 'Vaše naročilo',
     quantity: 'Količina',
     totalToPay: 'Skupaj za plačilo',
@@ -285,6 +292,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     timelinePaid: 'Plaćeno',
     timelineShipped: 'Poslano',
     orderReceivedTitle: 'Narudžba zaprimljena',
+    willContactSoon: 'Uskoro ćemo Vas obavijestiti o sljedećim koracima.',
     yourOrder: 'Vaša narudžba',
     quantity: 'Količina',
     totalToPay: 'Ukupno za plaćanje',

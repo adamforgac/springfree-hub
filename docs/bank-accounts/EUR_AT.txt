@@ -1,0 +1,5 @@
+Bank: Erste Bank
+Kontonummer: 841-954-412/00 (EUR)
+Bankleitzahl: 20111
+IBAN: AT89 2011 1841 9544 1200
+BIC: GIBAATWWXXX

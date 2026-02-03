@@ -88,8 +88,7 @@ u+#body a{color:inherit;text-decoration:none;}
 <tr>
 <td align="center" valign="top" style="padding:40px 40px 16px 40px;" class="mobile-padding">
 <h1 style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:bold;color:#2d3748;margin:0 0 14px 0;line-height:1.2;">${bt.greeting}</h1>
-<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#64748b;margin:0 0 12px 0;max-width:480px;">${bt.orderReceived.replace('{{name}}', '[jméno]').replace('{{order_number}}', '<strong style="color:#0088CE;">[číslo_objednávky]</strong>')}</p>
-<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#334155;margin:0;max-width:480px;font-weight:500;">${bt.bankTransferChosen} ${bt.willShipAfterPayment}</p>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#64748b;margin:0;max-width:480px;">${bt.orderReceived.replace('{{name}}', '[jméno]').replace('{{order_number}}', '<strong style="color:#0088CE;">[číslo_objednávky]</strong>')} ${bt.bankTransferChosen}</p>
 </td>
 </tr>
 <!-- TIMELINE -->
@@ -103,12 +102,12 @@ u+#body a{color:inherit;text-decoration:none;}
 <div style="padding-top:8px;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;color:#0088CE;text-align:center;">${t.timelineConfirmed}</div>
 </td>
 <td valign="top" style="padding-top:15px;">
-<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td style="border-top:2px solid #f59e0b;"></td></tr></table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td style="border-top:2px solid #0088CE;"></td></tr></table>
 </td>
 <td width="80" align="center" valign="top">
-<!--[if mso]><table border="0" cellpadding="0" cellspacing="0"><tr><td width="32" height="32" bgcolor="#f59e0b" style="border-radius:16px;text-align:center;"><span style="font-family:Arial,sans-serif;font-size:14px;color:#ffffff;line-height:32px;">&#9679;</span></td></tr></table><![endif]-->
-<!--[if !mso]><!--><div style="width:32px;height:32px;background-color:#f59e0b;border-radius:50%;text-align:center;line-height:32px;margin:0 auto;"><span style="font-family:Arial,sans-serif;font-size:14px;color:#ffffff;">&#9679;</span></div><!--<![endif]-->
-<div style="padding-top:8px;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;color:#f59e0b;text-align:center;">${bt.timelineWaitingPayment}</div>
+<!--[if mso]><table border="0" cellpadding="0" cellspacing="0"><tr><td width="32" height="32" bgcolor="#0088CE" style="border-radius:16px;text-align:center;vertical-align:middle;"><span style="font-family:Arial,sans-serif;font-size:10px;color:#ffffff;line-height:32px;">&#9679;</span></td></tr></table><![endif]-->
+<!--[if !mso]><!--><div style="width:32px;height:32px;background-color:#0088CE;border-radius:50%;text-align:center;line-height:32px;margin:0 auto;"><span style="font-family:Arial,sans-serif;font-size:10px;color:#ffffff;">&#9679;</span></div><!--<![endif]-->
+<div style="padding-top:8px;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;color:#0088CE;text-align:center;">${bt.timelineWaitingPayment}</div>
 </td>
 <td valign="top" style="padding-top:15px;">
 <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td style="border-top:2px solid #e2e8f0;"></td></tr></table>
@@ -125,30 +124,38 @@ u+#body a{color:inherit;text-decoration:none;}
 <!-- BANK DETAILS -->
 <tr>
 <td style="padding:0 40px 25px 40px;" class="mobile-padding">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#fef3c7;border-radius:10px;border:2px solid #f59e0b;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f8fafc;border-radius:10px;border:1px solid #e2e8f0;">
 <tr>
 <td style="padding:20px;font-family:Arial,Helvetica,sans-serif;">
-<p style="font-size:14px;font-weight:bold;color:#92400e;margin:0 0 16px 0;text-transform:uppercase;letter-spacing:1px;">${bt.bankDetailsTitle}</p>
+<p style="font-size:12px;font-weight:bold;color:#94a3b8;margin:0 0 16px 0;text-transform:uppercase;letter-spacing:1px;">${bt.bankDetailsTitle}</p>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr>
-<td style="padding:6px 0;font-size:13px;color:#78350f;width:140px;vertical-align:top;">${bt.bankName}:</td>
-<td style="padding:6px 0;font-size:13px;color:#451a03;font-weight:bold;">${bankAccount.bankName}</td>
+<td style="padding:6px 0;font-size:13px;color:#64748b;width:140px;vertical-align:top;">${bt.bankName}</td>
+<td style="padding:6px 0;font-size:13px;color:#334155;font-weight:bold;">${bankAccount.bankName}</td>
 </tr>
 <tr>
-<td style="padding:6px 0;font-size:13px;color:#78350f;width:140px;vertical-align:top;">${bt.iban}:</td>
-<td style="padding:6px 0;font-size:14px;color:#451a03;font-weight:bold;letter-spacing:0.5px;">${bankAccount.iban}</td>
+<td style="padding:6px 0;font-size:13px;color:#64748b;width:140px;vertical-align:top;">${bt.iban}</td>
+<td style="padding:6px 0;font-size:14px;color:#334155;font-weight:bold;letter-spacing:0.5px;">${bankAccount.iban}</td>
 </tr>
 <tr>
-<td style="padding:6px 0;font-size:13px;color:#78350f;width:140px;vertical-align:top;">${bt.bic}:</td>
-<td style="padding:6px 0;font-size:13px;color:#451a03;font-weight:bold;">${bankAccount.bic}</td>
+<td style="padding:6px 0;font-size:13px;color:#64748b;width:140px;vertical-align:top;">${bt.bic}</td>
+<td style="padding:6px 0;font-size:13px;color:#334155;font-weight:bold;">${bankAccount.bic}</td>
 </tr>
 <tr>
-<td style="padding:6px 0;font-size:13px;color:#78350f;width:140px;vertical-align:top;">${bt.variableSymbol}:</td>
-<td style="padding:6px 0;font-size:14px;color:#451a03;font-weight:bold;">[číslo_objednávky]</td>
+<td style="padding:6px 0;font-size:13px;color:#64748b;width:140px;vertical-align:top;">${bt.variableSymbol}</td>
+<td style="padding:6px 0;font-size:14px;color:#334155;font-weight:bold;">[číslo_objednávky]</td>
+</tr>
+</table>
+</td>
 </tr>
 <tr>
-<td style="padding:12px 0 0 0;font-size:13px;color:#78350f;width:140px;vertical-align:top;">${bt.amount}:</td>
-<td style="padding:12px 0 0 0;font-size:18px;color:#0088CE;font-weight:bold;">[cena_za objednávku] [měna]</td>
+<td style="padding:0 20px 20px 20px;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#0088CE;border-radius:8px;">
+<tr>
+<td align="center" style="padding:16px;font-family:Arial,Helvetica,sans-serif;">
+<p style="font-size:11px;color:rgba(255,255,255,0.85);margin:0 0 4px 0;letter-spacing:1px;">${bt.amount.toUpperCase()}</p>
+<p style="font-size:22px;font-weight:bold;color:#ffffff;margin:0;">[cena_za objednávku] [měna]</p>
+</td>
 </tr>
 </table>
 </td>
@@ -159,11 +166,11 @@ u+#body a{color:inherit;text-decoration:none;}
 <!-- SPEED UP TIP -->
 <tr>
 <td style="padding:0 40px 25px 40px;" class="mobile-padding">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#ecfdf5;border-radius:8px;border-left:4px solid #10b981;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f0f9ff;border-radius:8px;border-left:4px solid #0088CE;">
 <tr>
 <td style="padding:16px 18px;font-family:Arial,Helvetica,sans-serif;">
-<p style="font-size:14px;font-weight:bold;color:#065f46;margin:0 0 6px 0;">${bt.speedUpTitle}</p>
-<p style="font-size:13px;color:#047857;margin:0;line-height:20px;">${bt.speedUpText}</p>
+<p style="font-size:14px;font-weight:bold;color:#334155;margin:0 0 6px 0;">${bt.speedUpTitle}</p>
+<p style="font-size:13px;color:#64748b;margin:0;line-height:20px;">${bt.speedUpText}</p>
 </td>
 </tr>
 </table>
