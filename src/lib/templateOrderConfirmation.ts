@@ -1,5 +1,5 @@
 import { MarketCode } from './types';
-import { MARKETS, TRANSLATIONS } from './markets';
+import { MARKETS, TRANSLATIONS, FOOTER_BANK_INFO } from './markets';
 import { PRODUCT_SLUGS } from './product_dictionary';
 
 interface UpsellProduct {
@@ -274,6 +274,9 @@ ${products[3] ? generateUpsellCard(products[3]) : ''}
 </tr>
 <tr>
 <td align="center" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#94a3b8;padding-bottom:6px;">${t.brandName}&nbsp;|&nbsp;${marketData.email}&nbsp;|&nbsp;${phoneNbspClean}</td>
+</tr>
+<tr>
+<td align="center" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#94a3b8;padding-bottom:6px;">${FOOTER_BANK_INFO[market]}</td>
 </tr>
 <tr>
 <td align="center" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#94a3b8;">${t.copyright}</td>

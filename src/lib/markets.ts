@@ -490,3 +490,14 @@ export const PAYMENT_CONFIRMED_TRANSLATIONS: Record<MarketCode, {
     preparingShipment: 'Vašu narudžbu sada pripremamo za slanje.',
   },
 };
+
+// Footer bank account info per market
+export const FOOTER_BANK_INFO: Record<MarketCode, string> = {
+  cs: 'IBAN: CZ80 0300 0000 0002 9066 7005 | BIC: CEKOCZPP | ČSOB',
+  sk: 'IBAN: CZ36 0300 0000 0002 9066 7021 | BIC: CEKOCZPP | ČSOB',
+  de: 'IBAN: AT89 2011 1841 9544 1200 | BIC: GIBAATWWXXX | Erste Bank',
+  pl: 'IBAN: CZ98 0300 0000 0003 5443 1086 | BIC: CEKOCZPP | ČSOB',
+  hu: 'IBAN: CZ36 0300 0000 0002 9066 7021 | BIC: CEKOCZPP | ČSOB',
+  sl: 'IBAN: CZ36 0300 0000 0002 9066 7021 | BIC: CEKOCZPP | ČSOB',
+  hr: 'IBAN: CZ36 0300 0000 0002 9066 7021 | BIC: CEKOCZPP | ČSOB',
+};
