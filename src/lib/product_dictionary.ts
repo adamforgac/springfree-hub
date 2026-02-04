@@ -34,8 +34,8 @@ export const PRODUCT_NAMES: Record<ProductSku, Record<MarketCode, string>> = {
     de: 'Abdeckung',
     pl: 'Pokrowiec',
     hu: 'Trambulin borítás',
-    sl: 'Pokrivni ponjava',
-    hr: 'Pokrivanje ploviti',
+    sl: 'Pokrivna ponjava',
+    hr: 'Zaštitno pokrivalo',
   },
   [PRODUCT_SKUS.WHEELS]: {
     cs: 'Pojezdová kola',

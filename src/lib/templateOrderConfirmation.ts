@@ -83,24 +83,10 @@ u+#body a{color:inherit;text-decoration:none;}
 </tr>
 <!-- HERO -->
 <tr>
-<td align="center" valign="top" style="padding:40px 40px 16px 40px;" class="mobile-padding">
+<td align="center" valign="top" style="padding:40px 40px 30px 40px;" class="mobile-padding">
 <h1 style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:bold;color:#2d3748;margin:0 0 14px 0;line-height:1.2;">${t.greeting}</h1>
 <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#64748b;margin:0 0 8px 0;max-width:480px;">${t.orderConfirmed.replace('{{name}}', '[jméno]').replace('{{order_number}}', '<strong style="color:#0088CE;">[číslo_objednávky]</strong>')}</p>
 <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#94a3b8;margin:0;max-width:480px;">${t.willContactSoon}</p>
-</td>
-</tr>
-<!-- STATUS BOX (instead of timeline) -->
-<tr>
-<td style="padding:16px 40px 30px 40px;" class="mobile-padding">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f0f9ff;border-radius:10px;border:2px solid #0088CE;">
-<tr>
-<td align="center" style="padding:20px;font-family:Arial,Helvetica,sans-serif;">
-<!--[if mso]><table border="0" cellpadding="0" cellspacing="0"><tr><td width="32" height="32" bgcolor="#0088CE" style="border-radius:16px;text-align:center;vertical-align:middle;"><span style="font-family:Arial,sans-serif;font-size:16px;color:#ffffff;line-height:32px;">&#10003;</span></td></tr></table><![endif]-->
-<!--[if !mso]><!--><div style="width:32px;height:32px;background-color:#0088CE;border-radius:50%;text-align:center;line-height:32px;margin:0 auto 10px auto;"><span style="font-family:Arial,sans-serif;font-size:16px;color:#ffffff;">&#10003;</span></div><!--<![endif]-->
-<p style="font-size:16px;font-weight:bold;color:#0088CE;margin:0;">${t.orderReceivedTitle}</p>
-</td>
-</tr>
-</table>
 </td>
 </tr>
 <!-- DIVIDER -->
