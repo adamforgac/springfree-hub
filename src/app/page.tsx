@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 import { MARKETS } from '@/lib/markets';
 import { MarketCode } from '@/lib/types';
 
-type TemplateType = 'order-confirmation' | 'order-bank-transfer' | 'payment-confirmed';
+type TemplateType = 'order-confirmation' | 'order-bank-transfer' | 'payment-confirmed' | 'order-shipped';
 
 const TEMPLATE_OPTIONS: { value: TemplateType; label: string; description: string }[] = [
   { value: 'order-confirmation', label: 'Potvrzeni objednavky', description: 'Email 1 - ihned po objednavce (vsem)' },
   { value: 'order-bank-transfer', label: 'Ceka se na platbu', description: 'Email 2a - bankovni prevod' },
   { value: 'payment-confirmed', label: 'Platba potvrzena', description: 'Email 2b - karta nebo prevod prijat' },
+  { value: 'order-shipped', label: 'Objednavka odeslana', description: 'Email 3 - zasilka odeslana' },
 ];
 
 interface ProductData {
@@ -141,7 +142,7 @@ export default function Home() {
                 style={{ marginBottom: '8px' }}
               >
                 <span className="flag" style={{ fontSize: '16px' }}>
-                  {template.value === 'order-confirmation' ? '📦' : template.value === 'order-bank-transfer' ? '🏦' : '✅'}
+                  {template.value === 'order-confirmation' ? '📦' : template.value === 'order-bank-transfer' ? '🏦' : template.value === 'payment-confirmed' ? '✅' : '🚚'}
                 </span>
                 <span className="info">
                   <span className="name">{template.label}</span>

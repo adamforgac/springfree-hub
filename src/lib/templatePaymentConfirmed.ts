@@ -152,7 +152,7 @@ u+#body a{color:inherit;text-decoration:none;}
 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#0088CE;border-radius:10px;">
 <tr>
 <td align="center" style="padding:22px;font-family:Arial,Helvetica,sans-serif;">
-<p style="font-size:12px;color:rgba(255,255,255,0.85);margin:0 0 6px 0;letter-spacing:1px;">${t.totalToPay.toUpperCase()}</p>
+<p style="font-size:12px;color:rgba(255,255,255,0.85);margin:0 0 6px 0;letter-spacing:1px;">${t.totalOrderPrice.toUpperCase()}</p>
 <p style="font-size:26px;font-weight:bold;color:#ffffff;margin:0;" class="mobile-total">[cena_za objednávku] [měna]</p>
 </td>
 </tr>

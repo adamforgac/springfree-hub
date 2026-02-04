@@ -2,12 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { generateBankTransferEmailTemplate } from '@/lib/templateBankTransfer';
 import { generateOrderConfirmationEmailTemplate } from '@/lib/templateOrderConfirmation';
 import { generatePaymentConfirmedEmailTemplate } from '@/lib/templatePaymentConfirmed';
+import { generateOrderShippedEmailTemplate } from '@/lib/templateOrderShipped';
 import { MARKETS, TRANSLATIONS, UPSELL_SKUS } from '@/lib/markets';
 import { MarketCode } from '@/lib/types';
 import { PRODUCT_SKUS } from '@/lib/product_dictionary';
 import { validateTemplate } from '@/lib/validators';
 
-export type TemplateType = 'order-confirmation' | 'order-bank-transfer' | 'payment-confirmed';
+export type TemplateType = 'order-confirmation' | 'order-bank-transfer' | 'payment-confirmed' | 'order-shipped';
 
 interface RequestBody {
   market: MarketCode;
@@ -72,6 +73,9 @@ export async function POST(request: NextRequest) {
         break;
       case 'payment-confirmed':
         html = generatePaymentConfirmedEmailTemplate(templateData);
+        break;
+      case 'order-shipped':
+        html = generateOrderShippedEmailTemplate(templateData);
         break;
       default:
         html = generateOrderConfirmationEmailTemplate(templateData);

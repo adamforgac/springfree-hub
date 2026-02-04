@@ -55,6 +55,7 @@ export const TRANSLATIONS: Record<MarketCode, {
   yourOrder: string;
   quantity: string;
   totalToPay: string;
+  totalOrderPrice: string;
   deliveryDetails: string;
   billingAddress: string;
   shippingAddress: string;
@@ -86,6 +87,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     yourOrder: 'Vaše objednávka',
     quantity: 'Množství',
     totalToPay: 'Celkem k úhradě',
+    totalOrderPrice: 'Celková cena objednávky',
     deliveryDetails: 'Dodací údaje',
     billingAddress: 'Fakturační adresa',
     shippingAddress: 'Doručovací adresa',
@@ -121,6 +123,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     yourOrder: 'Vaša objednávka',
     quantity: 'Množstvo',
     totalToPay: 'Celkom k úhrade',
+    totalOrderPrice: 'Celková cena objednávky',
     deliveryDetails: 'Dodacie údaje',
     billingAddress: 'Fakturačná adresa',
     shippingAddress: 'Doručovacia adresa',
@@ -156,6 +159,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     yourOrder: 'Ihre Bestellung',
     quantity: 'Menge',
     totalToPay: 'Gesamtbetrag',
+    totalOrderPrice: 'Gesamtpreis der Bestellung',
     deliveryDetails: 'Lieferdetails',
     billingAddress: 'Rechnungsadresse',
     shippingAddress: 'Lieferadresse',
@@ -191,6 +195,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     yourOrder: 'Twoje zamówienie',
     quantity: 'Ilość',
     totalToPay: 'Razem do zapłaty',
+    totalOrderPrice: 'Całkowita cena zamówienia',
     deliveryDetails: 'Dane dostawy',
     billingAddress: 'Adres do faktury',
     shippingAddress: 'Adres dostawy',
@@ -226,6 +231,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     yourOrder: 'Az Ön rendelése',
     quantity: 'Mennyiség',
     totalToPay: 'Fizetendő összeg',
+    totalOrderPrice: 'Rendelés teljes összege',
     deliveryDetails: 'Szállítási adatok',
     billingAddress: 'Számlázási cím',
     shippingAddress: 'Szállítási cím',
@@ -261,6 +267,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     yourOrder: 'Vaše naročilo',
     quantity: 'Količina',
     totalToPay: 'Skupaj za plačilo',
+    totalOrderPrice: 'Skupna cena naročila',
     deliveryDetails: 'Podatki o dostavi',
     billingAddress: 'Naslov za račun',
     shippingAddress: 'Naslov za dostavo',
@@ -296,6 +303,7 @@ export const TRANSLATIONS: Record<MarketCode, {
     yourOrder: 'Vaša narudžba',
     quantity: 'Količina',
     totalToPay: 'Ukupno za plaćanje',
+    totalOrderPrice: 'Ukupna cijena narudžbe',
     deliveryDetails: 'Podaci o isporuci',
     billingAddress: 'Adresa za račun',
     shippingAddress: 'Adresa za isporuku',
@@ -335,11 +343,11 @@ export const BANK_TRANSFER_TRANSLATIONS: Record<MarketCode, {
   speedUpText: string;
 }> = {
   cs: {
-    emailTitle: 'Platební údaje k objednávce',
-    greeting: 'Děkujeme za Vaši objednávku!',
-    orderReceived: 'Vážený/á {{name}}, Vaše objednávka č. {{order_number}} byla úspěšně přijata.',
-    bankTransferChosen: 'Zvolili jste platbu bankovním převodem.',
-    willShipAfterPayment: 'Vaši objednávku odešleme, jakmile obdržíme platbu na náš účet.',
+    emailTitle: 'Čekáme na Vaši platbu',
+    greeting: 'Dokončete svou objednávku',
+    orderReceived: 'Vážený/á {{name}}, Vaše objednávka č. {{order_number}} byla přijata a čeká na uhrazení.',
+    bankTransferChosen: 'Pro odeslání zboží prosím proveďte platbu na níže uvedený účet.',
+    willShipAfterPayment: '',
     timelineWaitingPayment: 'Čeká na platbu',
     bankDetailsTitle: 'Platební údaje',
     bankName: 'Banka',
@@ -351,11 +359,11 @@ export const BANK_TRANSFER_TRANSLATIONS: Record<MarketCode, {
     speedUpText: 'Odpovězte na tento email a přiložte potvrzení o odeslání platby z Vaší banky. Objednávku pak zpracujeme přednostně.',
   },
   sk: {
-    emailTitle: 'Platobné údaje k objednávke',
-    greeting: 'Ďakujeme za Vašu objednávku!',
-    orderReceived: 'Vážený/á {{name}}, Vaša objednávka č. {{order_number}} bola úspešne prijatá.',
-    bankTransferChosen: 'Zvolili ste platbu bankovým prevodom.',
-    willShipAfterPayment: 'Vašu objednávku odošleme, akonáhle obdržíme platbu na náš účet.',
+    emailTitle: 'Čakáme na Vašu platbu',
+    greeting: 'Dokončite svoju objednávku',
+    orderReceived: 'Vážený/á {{name}}, Vaša objednávka č. {{order_number}} bola prijatá a čaká na uhradenie.',
+    bankTransferChosen: 'Pre odoslanie tovaru prosím vykonajte platbu na nižšie uvedený účet.',
+    willShipAfterPayment: '',
     timelineWaitingPayment: 'Čaká na platbu',
     bankDetailsTitle: 'Platobné údaje',
     bankName: 'Banka',
@@ -367,11 +375,11 @@ export const BANK_TRANSFER_TRANSLATIONS: Record<MarketCode, {
     speedUpText: 'Odpovedzte na tento email a priložte potvrdenie o odoslaní platby z Vašej banky. Objednávku potom spracujeme prednostne.',
   },
   de: {
-    emailTitle: 'Zahlungsinformationen zur Bestellung',
-    greeting: 'Vielen Dank für Ihre Bestellung!',
-    orderReceived: 'Sehr geehrte/r {{name}}, Ihre Bestellung Nr. {{order_number}} wurde erfolgreich angenommen.',
-    bankTransferChosen: 'Sie haben Banküberweisung als Zahlungsmethode gewählt.',
-    willShipAfterPayment: 'Wir versenden Ihre Bestellung, sobald die Zahlung auf unserem Konto eingegangen ist.',
+    emailTitle: 'Wir warten auf Ihre Zahlung',
+    greeting: 'Schließen Sie Ihre Bestellung ab',
+    orderReceived: 'Sehr geehrte/r {{name}}, Ihre Bestellung Nr. {{order_number}} wurde angenommen und wartet auf Bezahlung.',
+    bankTransferChosen: 'Bitte überweisen Sie den Betrag auf das unten angegebene Konto, um den Versand zu starten.',
+    willShipAfterPayment: '',
     timelineWaitingPayment: 'Warten auf Zahlung',
     bankDetailsTitle: 'Zahlungsinformationen',
     bankName: 'Bank',
@@ -383,11 +391,11 @@ export const BANK_TRANSFER_TRANSLATIONS: Record<MarketCode, {
     speedUpText: 'Antworten Sie auf diese E-Mail und fügen Sie eine Zahlungsbestätigung Ihrer Bank bei. Wir werden Ihre Bestellung dann bevorzugt bearbeiten.',
   },
   pl: {
-    emailTitle: 'Dane do przelewu',
-    greeting: 'Dziękujemy za zamówienie!',
-    orderReceived: 'Szanowny/a {{name}}, Twoje zamówienie nr {{order_number}} zostało przyjęte.',
-    bankTransferChosen: 'Wybrałeś/aś płatność przelewem bankowym.',
-    willShipAfterPayment: 'Wyślemy Twoje zamówienie, gdy tylko otrzymamy płatność na nasze konto.',
+    emailTitle: 'Czekamy na Twoją płatność',
+    greeting: 'Dokończ swoje zamówienie',
+    orderReceived: 'Szanowny/a {{name}}, Twoje zamówienie nr {{order_number}} zostało przyjęte i czeka na opłacenie.',
+    bankTransferChosen: 'Aby rozpocząć wysyłkę, prosimy o dokonanie przelewu na poniższe konto.',
+    willShipAfterPayment: '',
     timelineWaitingPayment: 'Oczekuje na płatność',
     bankDetailsTitle: 'Dane do przelewu',
     bankName: 'Bank',
@@ -399,11 +407,11 @@ export const BANK_TRANSFER_TRANSLATIONS: Record<MarketCode, {
     speedUpText: 'Odpowiedz na ten email i dołącz potwierdzenie przelewu z Twojego banku. Wtedy przetworzymy Twoje zamówienie priorytetowo.',
   },
   hu: {
-    emailTitle: 'Fizetési adatok a rendeléshez',
-    greeting: 'Köszönjük a rendelését!',
-    orderReceived: 'Tisztelt {{name}}, a(z) {{order_number}} számú rendelése sikeresen rögzítésre került.',
-    bankTransferChosen: 'Ön banki átutalást választott fizetési módként.',
-    willShipAfterPayment: 'Rendelését azonnal elküldjük, amint a befizetés megérkezik számlánkra.',
+    emailTitle: 'Várjuk a fizetését',
+    greeting: 'Fejezze be rendelését',
+    orderReceived: 'Tisztelt {{name}}, a(z) {{order_number}} számú rendelése rögzítésre került és fizetésre vár.',
+    bankTransferChosen: 'A szállítás megkezdéséhez kérjük, utalja át az összeget az alábbi számlára.',
+    willShipAfterPayment: '',
     timelineWaitingPayment: 'Fizetésre vár',
     bankDetailsTitle: 'Fizetési adatok',
     bankName: 'Bank',
@@ -415,11 +423,11 @@ export const BANK_TRANSFER_TRANSLATIONS: Record<MarketCode, {
     speedUpText: 'Válaszoljon erre az e-mailre, és csatolja a bankjától kapott átutalási igazolást. Így rendelését elsőbbséggel kezeljük.',
   },
   sl: {
-    emailTitle: 'Podatki za plačilo naročila',
-    greeting: 'Hvala za vaše naročilo!',
-    orderReceived: 'Spoštovani {{name}}, vaše naročilo št. {{order_number}} je bilo uspešno sprejeto.',
-    bankTransferChosen: 'Izbrali ste plačilo z bančnim nakazilom.',
-    willShipAfterPayment: 'Vaše naročilo bomo odposlali takoj, ko prejmemo plačilo na naš račun.',
+    emailTitle: 'Čakamo na vaše plačilo',
+    greeting: 'Dokončajte svoje naročilo',
+    orderReceived: 'Spoštovani {{name}}, vaše naročilo št. {{order_number}} je bilo sprejeto in čaka na plačilo.',
+    bankTransferChosen: 'Za začetek pošiljanja prosimo nakažite znesek na spodnji račun.',
+    willShipAfterPayment: '',
     timelineWaitingPayment: 'Čaka na plačilo',
     bankDetailsTitle: 'Podatki za plačilo',
     bankName: 'Banka',
@@ -431,11 +439,11 @@ export const BANK_TRANSFER_TRANSLATIONS: Record<MarketCode, {
     speedUpText: 'Odgovorite na to e-pošto in priložite potrdilo o nakazilu iz vaše banke. Vaše naročilo bomo nato obdelali prednostno.',
   },
   hr: {
-    emailTitle: 'Podaci za plaćanje narudžbe',
-    greeting: 'Hvala na Vašoj narudžbi!',
-    orderReceived: 'Poštovani {{name}}, Vaša narudžba br. {{order_number}} je uspješno zaprimljena.',
-    bankTransferChosen: 'Odabrali ste plaćanje bankovnom doznakom.',
-    willShipAfterPayment: 'Vašu narudžbu ćemo poslati čim primimo uplatu na naš račun.',
+    emailTitle: 'Čekamo Vašu uplatu',
+    greeting: 'Dovršite svoju narudžbu',
+    orderReceived: 'Poštovani {{name}}, Vaša narudžba br. {{order_number}} je zaprimljena i čeka na uplatu.',
+    bankTransferChosen: 'Za početak slanja molimo uplatite iznos na donji račun.',
+    willShipAfterPayment: '',
     timelineWaitingPayment: 'Čeka uplatu',
     bankDetailsTitle: 'Podaci za plaćanje',
     bankName: 'Banka',
@@ -496,6 +504,57 @@ export const PAYMENT_CONFIRMED_TRANSLATIONS: Record<MarketCode, {
     greeting: 'Hvala na uplati!',
     paymentReceived: 'Poštovani {{name}}, uplata za Vašu narudžbu br. {{order_number}} je uspješno zaprimljena.',
     preparingShipment: 'Vašu narudžbu sada pripremamo za slanje.',
+  },
+};
+
+// Order shipped email specific translations
+export const ORDER_SHIPPED_TRANSLATIONS: Record<MarketCode, {
+  emailTitle: string;
+  greeting: string;
+  orderShipped: string;
+  onItsWay: string;
+}> = {
+  cs: {
+    emailTitle: 'Objednávka odeslána',
+    greeting: 'Vaše objednávka je na cestě!',
+    orderShipped: 'Vážený/á {{name}}, Vaše objednávka č. {{order_number}} byla právě odeslána.',
+    onItsWay: 'Již brzy se budete moci těšit na skákání!',
+  },
+  sk: {
+    emailTitle: 'Objednávka odoslaná',
+    greeting: 'Vaša objednávka je na ceste!',
+    orderShipped: 'Vážený/á {{name}}, Vaša objednávka č. {{order_number}} bola práve odoslaná.',
+    onItsWay: 'Už čoskoro sa budete môcť tešiť na skákanie!',
+  },
+  de: {
+    emailTitle: 'Bestellung versandt',
+    greeting: 'Ihre Bestellung ist unterwegs!',
+    orderShipped: 'Sehr geehrte/r {{name}}, Ihre Bestellung Nr. {{order_number}} wurde soeben versandt.',
+    onItsWay: 'Schon bald können Sie sich auf das Springen freuen!',
+  },
+  pl: {
+    emailTitle: 'Zamówienie wysłane',
+    greeting: 'Twoje zamówienie jest w drodze!',
+    orderShipped: 'Szanowny/a {{name}}, Twoje zamówienie nr {{order_number}} zostało właśnie wysłane.',
+    onItsWay: 'Już wkrótce będziesz mógł/mogła cieszyć się skakaniem!',
+  },
+  hu: {
+    emailTitle: 'Rendelés elküldve',
+    greeting: 'Rendelése úton van!',
+    orderShipped: 'Tisztelt {{name}}, a(z) {{order_number}} számú rendelése most lett elküldve.',
+    onItsWay: 'Hamarosan élvezheti az ugrálást!',
+  },
+  sl: {
+    emailTitle: 'Naročilo poslano',
+    greeting: 'Vaše naročilo je na poti!',
+    orderShipped: 'Spoštovani {{name}}, vaše naročilo št. {{order_number}} je bilo pravkar poslano.',
+    onItsWay: 'Kmalu se boste lahko veselili skakanja!',
+  },
+  hr: {
+    emailTitle: 'Narudžba poslana',
+    greeting: 'Vaša narudžba je na putu!',
+    orderShipped: 'Poštovani {{name}}, Vaša narudžba br. {{order_number}} je upravo poslana.',
+    onItsWay: 'Uskoro ćete uživati u skakanju!',
   },
 };
 

@@ -1,6 +1,5 @@
 import { MarketCode } from './types';
-import { MARKETS, TRANSLATIONS, BANK_TRANSFER_TRANSLATIONS, FOOTER_BANK_INFO } from './markets';
-import { BANK_ACCOUNTS } from './bankAccounts';
+import { MARKETS, TRANSLATIONS, ORDER_SHIPPED_TRANSLATIONS, FOOTER_BANK_INFO } from './markets';
 import { PRODUCT_SLUGS } from './product_dictionary';
 
 interface UpsellProduct {
@@ -27,12 +26,11 @@ function getProductLink(sku: string, market: MarketCode): string {
   return `${baseUrl}/${slug}/`;
 }
 
-export function generateBankTransferEmailTemplate(data: TemplateData): string {
+export function generateOrderShippedEmailTemplate(data: TemplateData): string {
   const { market, products, showPrices } = data;
   const t = TRANSLATIONS[market];
-  const bt = BANK_TRANSFER_TRANSLATIONS[market];
+  const os = ORDER_SHIPPED_TRANSLATIONS[market];
   const marketData = MARKETS.find(m => m.code === market)!;
-  const bankAccount = BANK_ACCOUNTS[market];
 
   // Phone with non-breaking spaces (for contact section with hint)
   const phoneNbsp = marketData.phone.replace(/ /g, '&nbsp;') + (marketData.phoneHint ? '&nbsp;' + marketData.phoneHint.replace(/ /g, '&nbsp;') : '');
@@ -49,7 +47,7 @@ export function generateBankTransferEmailTemplate(data: TemplateData): string {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="x-apple-disable-message-reformatting">
 <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
-<title>${bt.emailTitle}</title>
+<title>${os.emailTitle}</title>
 <!--[if mso]>
 <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
 <style>table{border-collapse:collapse;}td,th,div,p,a,h1,h2,h3,h4,h5,h6{font-family:Arial,sans-serif;}</style>
@@ -87,13 +85,14 @@ u+#body a{color:inherit;text-decoration:none;}
 <!-- HERO -->
 <tr>
 <td align="center" valign="top" style="padding:40px 40px 16px 40px;" class="mobile-padding">
-<h1 style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:bold;color:#2d3748;margin:0 0 14px 0;line-height:1.2;">${bt.greeting}</h1>
-<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#64748b;margin:0;max-width:480px;">${bt.orderReceived.replace('{{name}}', '[jméno]').replace('{{order_number}}', '<strong style="color:#0088CE;">[číslo_objednávky]</strong>')} ${bt.bankTransferChosen}</p>
+<h1 style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:bold;color:#2d3748;margin:0 0 14px 0;line-height:1.2;">${os.greeting}</h1>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#64748b;margin:0 0 12px 0;max-width:480px;">${os.orderShipped.replace('{{name}}', '[jméno]').replace('{{order_number}}', '<strong style="color:#0088CE;">[číslo_objednávky]</strong>')}</p>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:#334155;margin:0;max-width:480px;font-weight:500;">${os.onItsWay}</p>
 </td>
 </tr>
-<!-- TIMELINE -->
+<!-- TIMELINE: Potvrzeno checkmark -> Zaplaceno checkmark -> Odeslano checkmark (all completed) -->
 <tr>
-<td style="padding:24px 40px 30px 40px;" class="mobile-padding">
+<td style="padding:24px 40px 20px 40px;" class="mobile-padding">
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr>
 <td width="80" align="center" valign="top">
@@ -105,72 +104,30 @@ u+#body a{color:inherit;text-decoration:none;}
 <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td style="border-top:2px solid #0088CE;"></td></tr></table>
 </td>
 <td width="80" align="center" valign="top">
-<!--[if mso]><table border="0" cellpadding="0" cellspacing="0"><tr><td width="32" height="32" bgcolor="#0088CE" style="border-radius:16px;text-align:center;vertical-align:middle;"><table border="0" cellpadding="0" cellspacing="0" align="center"><tr><td width="8" height="8" bgcolor="#ffffff" style="border-radius:4px;font-size:1px;line-height:1px;">&nbsp;</td></tr></table></td></tr></table><![endif]-->
-<!--[if !mso]><!--><table border="0" cellpadding="0" cellspacing="0" width="32" height="32" style="margin:0 auto;"><tr><td align="center" valign="middle" style="width:32px;height:32px;background-color:#0088CE;border-radius:50%;"><table border="0" cellpadding="0" cellspacing="0"><tr><td style="width:8px;height:8px;background-color:#ffffff;border-radius:50%;font-size:1px;line-height:1px;">&nbsp;</td></tr></table></td></tr></table><!--<![endif]-->
-<div style="padding-top:8px;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;color:#0088CE;text-align:center;">${bt.timelineWaitingPayment}</div>
+<!--[if mso]><table border="0" cellpadding="0" cellspacing="0"><tr><td width="32" height="32" bgcolor="#0088CE" style="border-radius:16px;text-align:center;"><span style="font-family:Arial,sans-serif;font-size:16px;color:#ffffff;line-height:32px;">&#10003;</span></td></tr></table><![endif]-->
+<!--[if !mso]><!--><div style="width:32px;height:32px;background-color:#0088CE;border-radius:50%;text-align:center;line-height:32px;margin:0 auto;"><span style="font-family:Arial,sans-serif;font-size:16px;color:#ffffff;">&#10003;</span></div><!--<![endif]-->
+<div style="padding-top:8px;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;color:#0088CE;text-align:center;">${t.timelinePaid}</div>
 </td>
 <td valign="top" style="padding-top:15px;">
-<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td style="border-top:2px solid #e2e8f0;"></td></tr></table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td style="border-top:2px solid #0088CE;"></td></tr></table>
 </td>
 <td width="80" align="center" valign="top">
-<!--[if mso]><table border="0" cellpadding="0" cellspacing="0"><tr><td width="32" height="32" bgcolor="#e2e8f0" style="border-radius:16px;text-align:center;"><span style="font-family:Arial,sans-serif;font-size:14px;color:#94a3b8;line-height:32px;">3</span></td></tr></table><![endif]-->
-<!--[if !mso]><!--><div style="width:32px;height:32px;background-color:#e2e8f0;border-radius:50%;text-align:center;line-height:32px;margin:0 auto;"><span style="font-family:Arial,sans-serif;font-size:14px;color:#94a3b8;">3</span></div><!--<![endif]-->
-<div style="padding-top:8px;font-family:Arial,sans-serif;font-size:12px;color:#94a3b8;text-align:center;">${t.timelineShipped}</div>
+<!--[if mso]><table border="0" cellpadding="0" cellspacing="0"><tr><td width="32" height="32" bgcolor="#0088CE" style="border-radius:16px;text-align:center;"><span style="font-family:Arial,sans-serif;font-size:16px;color:#ffffff;line-height:32px;">&#10003;</span></td></tr></table><![endif]-->
+<!--[if !mso]><!--><div style="width:32px;height:32px;background-color:#0088CE;border-radius:50%;text-align:center;line-height:32px;margin:0 auto;"><span style="font-family:Arial,sans-serif;font-size:16px;color:#ffffff;">&#10003;</span></div><!--<![endif]-->
+<div style="padding-top:8px;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;color:#0088CE;text-align:center;">${t.timelineShipped}</div>
 </td>
 </tr>
 </table>
 </td>
 </tr>
-<!-- BANK DETAILS -->
+<!-- TRACK ORDER BUTTON -->
 <tr>
-<td style="padding:0 40px 25px 40px;" class="mobile-padding">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f8fafc;border-radius:10px;border:1px solid #e2e8f0;">
+<td align="center" valign="top" style="padding:0 40px 30px 40px;" class="mobile-padding">
+<table border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td style="padding:20px;font-family:Arial,Helvetica,sans-serif;">
-<p style="font-size:12px;font-weight:bold;color:#94a3b8;margin:0 0 16px 0;text-transform:uppercase;letter-spacing:1px;">${bt.bankDetailsTitle}</p>
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-<tr>
-<td style="padding:6px 0;font-size:13px;color:#64748b;width:140px;vertical-align:top;">${bt.bankName}</td>
-<td style="padding:6px 0;font-size:13px;color:#334155;font-weight:bold;">${bankAccount.bankName}</td>
-</tr>
-<tr>
-<td style="padding:6px 0;font-size:13px;color:#64748b;width:140px;vertical-align:top;">${bt.iban}</td>
-<td style="padding:6px 0;font-size:14px;color:#334155;font-weight:bold;letter-spacing:0.5px;">${bankAccount.iban}</td>
-</tr>
-<tr>
-<td style="padding:6px 0;font-size:13px;color:#64748b;width:140px;vertical-align:top;">${bt.bic}</td>
-<td style="padding:6px 0;font-size:13px;color:#334155;font-weight:bold;">${bankAccount.bic}</td>
-</tr>
-<tr>
-<td style="padding:6px 0;font-size:13px;color:#64748b;width:140px;vertical-align:top;">${bt.variableSymbol}</td>
-<td style="padding:6px 0;font-size:14px;color:#334155;font-weight:bold;">[číslo_objednávky]</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="padding:0 20px 20px 20px;">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#0088CE;border-radius:8px;">
-<tr>
-<td align="center" style="padding:16px;font-family:Arial,Helvetica,sans-serif;">
-<p style="font-size:11px;color:rgba(255,255,255,0.85);margin:0 0 4px 0;letter-spacing:1px;">${bt.amount.toUpperCase()}</p>
-<p style="font-size:22px;font-weight:bold;color:#ffffff;margin:0;">[cena_za objednávku] [měna]</p>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<!-- SPEED UP TIP -->
-<tr>
-<td style="padding:0 40px 25px 40px;" class="mobile-padding">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#ecfdf5;border-radius:8px;border-left:4px solid #10b981;">
-<tr>
-<td style="padding:16px 18px;font-family:Arial,Helvetica,sans-serif;">
-<p style="font-size:14px;font-weight:bold;color:#065f46;margin:0 0 6px 0;">${bt.speedUpTitle}</p>
-<p style="font-size:13px;color:#047857;margin:0;line-height:20px;">${bt.speedUpText}</p>
+<td align="center" style="background-color:#0088CE;border-radius:8px;">
+<!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="[odkaz_na_objednávku_68172]" style="height:48px;v-text-anchor:middle;width:200px;" arcsize="10%" strokecolor="#0088CE" fillcolor="#0088CE"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">${t.trackOrder}</center></v:roundrect><![endif]-->
+<!--[if !mso]><!--><a href="[odkaz_na_objednávku_68172]" target="_blank" style="display:inline-block;padding:14px 36px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none;background-color:#0088CE;border-radius:8px;">${t.trackOrder}</a><!--<![endif]-->
 </td>
 </tr>
 </table>
@@ -189,6 +146,19 @@ u+#body a{color:inherit;text-decoration:none;}
 </td>
 </tr>
 [seznam_položek(<tr><td style="padding:0 40px 10px 40px;" class="mobile-padding"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"><tr><td width="60" style="padding:12px;vertical-align:middle;"><img src="https://jumpsafe.eu/mail-images/[i_sku].png" alt="[i_name]" width="50" height="50" style="display:block;border-radius:6px;"></td><td style="padding:12px 8px;vertical-align:middle;font-family:Arial,Helvetica,sans-serif;"><p style="font-size:14px;font-weight:bold;color:#334155;margin:0 0 4px 0;line-height:1.3;">[i_name]</p><p style="font-size:12px;color:#94a3b8;margin:0;">[i_quantity]x</p></td><td style="padding:12px;text-align:right;vertical-align:middle;white-space:nowrap;font-family:Arial,Helvetica,sans-serif;"><p style="font-size:14px;font-weight:bold;color:#334155;margin:0;white-space:nowrap;">[i_price]&nbsp;[i_currency]</p></td></tr></table></td></tr>)]
+<!-- TOTAL -->
+<tr>
+<td style="padding:15px 40px 30px 40px;" class="mobile-padding">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#0088CE;border-radius:10px;">
+<tr>
+<td align="center" style="padding:22px;font-family:Arial,Helvetica,sans-serif;">
+<p style="font-size:12px;color:rgba(255,255,255,0.85);margin:0 0 6px 0;letter-spacing:1px;">${t.totalOrderPrice.toUpperCase()}</p>
+<p style="font-size:26px;font-weight:bold;color:#ffffff;margin:0;" class="mobile-total">[cena_za objednávku] [měna]</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
 <!-- DIVIDER -->
 <tr>
 <td style="padding:0 40px;" class="mobile-padding">
